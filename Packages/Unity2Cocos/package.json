@@ -1,0 +1,12 @@
+{
+  "name": "jp.amagamina.unity-2-cocos",
+  "displayName": "Unity 2 Cocos",
+  "author": { "name": "Amagamina Games, Inc.", "url": "https://amagamina.jp" },
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "keywords": [ "cocos", "cc" ],
+  "description": "Scene & Asset exporter for Cocos Creator.",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  }
+}
