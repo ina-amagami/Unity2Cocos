@@ -7,6 +7,7 @@
   "keywords": [ "cocos", "cc" ],
   "description": "Scene & Asset exporter for Cocos Creator.",
   "dependencies": {
+    "com.unity.render-pipelines.universal": "14.0.9",
     "com.unity.nuget.newtonsoft-json": "3.0.2"
   }
 }
