@@ -6,8 +6,6 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using cc;
-using UnityEditor;
-using UnityEngine.Tilemaps;
 
 namespace Unity2Cocos
 {
@@ -23,12 +21,6 @@ namespace Unity2Cocos
 			var uuidBytes = Guid.NewGuid().ToByteArray();
 			var base64EncodedUuid = Convert.ToBase64String(uuidBytes);
 			return base64EncodedUuid.TrimEnd('=');
-		}
-		
-		// FIXME: Cocos sub-asset UUID generation rules are unknown.
-		public static string NewSubAssetUuid()
-		{
-			return Guid.NewGuid().ToString().Substring(0, 5);
 		}
 		
 		public static IEnumerable<Type> GetTypesIsSubclassOf<T>()

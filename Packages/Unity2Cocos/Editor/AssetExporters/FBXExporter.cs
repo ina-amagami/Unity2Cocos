@@ -66,26 +66,34 @@ namespace Unity2Cocos
 			{
 				var mesh = meshes[i];
 				var subMeta = new MeshSubMeta();
-				var subUserData = new MeshSubMeta.UserData();
-				subUserData.gltfIndex = i;
-				subUserData.triangleCount = mesh.triangles.Length / 3;
-				subMeta.userData = subUserData;
-				subMeta.name = mesh.name + ".mesh";
-				subMeta.id = Utils.NewSubAssetUuid();
-				subMeta.uuid = $"{ccMeta.uuid}@{subMeta.id}";
-
-				if (!userData.assetFinder.TryGetValue("meshes", out var list))
-				{
-					list = new List<string>();
-					userData.assetFinder.Add("meshes", list);
-				}
-				list.Add(subMeta.uuid);
+				
+				// var subUserData = new MeshSubMeta.UserData();
+				// subUserData.gltfIndex = i;
+				// subUserData.triangleCount = mesh.triangles.Length / 3;
+				// subMeta.userData = subUserData;
+				// subMeta.name = mesh.name + ".mesh";
+				// subMeta.id = "xxxxx";
+				// subMeta.uuid = $"{ccMeta.uuid}@{subMeta.id}";
+				
+				// FIXME: Originally, a 5-digit hex value is assigned after @ by Cocos,
+				// but due to the unknown calculation method,
+				// the mesh name is assigned and resolved later by executing a Python script.
+				subMeta.uuid = $"{ccMeta.uuid}@{mesh.name}.mesh";
+				
+				// if (!userData.assetFinder.TryGetValue("meshes", out var list))
+				// {
+				// 	list = new List<string>();
+				// 	userData.assetFinder.Add("meshes", list);
+				// }
+				// list.Add(subMeta.uuid);
+				
 				if (mesh.Equals(source))
 				{
 					result = subMeta.uuid;
 				}
+				Exporter.AddAssetMap(mesh, subMeta.uuid);
 				
-				subMetas.Add(subMeta.id, subMeta);
+				// subMetas.Add(subMeta.id, subMeta);
 			}
 			
 			AssetExporter.ExportAssetCopy(info);
