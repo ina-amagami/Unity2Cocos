@@ -7,6 +7,7 @@ using System.Reflection;
 using UnityEngine;
 using cc;
 using UnityEditor;
+using UnityEngine.Tilemaps;
 
 namespace Unity2Cocos
 {
@@ -47,7 +48,7 @@ namespace Unity2Cocos
 			return attributes[0];
 		}
 
-		public static bool ConvertPathFormat => ExportSetting.Instance.ConvertPathFormat;
+		public static bool ConvertPathFormat => ExportSetting.Instance.ExportWebLikePaths;
 		
 		public static string ConvertToOutputPathFormat(string input)
 		{
@@ -101,7 +102,7 @@ namespace Unity2Cocos
 			return string.Concat(names.Select((s, i) => s + (i == names.Count - 1 ? "" : "/")));
 		}
 
-		public static bool ConvertToRightHanded => ExportSetting.Instance.ConvertToRightHanded;
+		public static bool ConvertToRightHanded => ExportSetting.Instance.Advanced.ConvertToRightHanded;
 		
 		public static Vec3 Vector3ToVec3(Vector3 v)
 		{
@@ -129,6 +130,47 @@ namespace Unity2Cocos
 		public static cc.Color Color32ToCocosColor(Color32 color)
 		{
 			return new() { r = color.r, g = color.g, b = color.b, a = color.a };
+		}
+
+		public static string TextureWrapModeToCocos(TextureWrapMode mode)
+		{
+			return mode switch
+			{
+				TextureWrapMode.Repeat => "repeat",
+				TextureWrapMode.Clamp => "clamp-to-edge",
+				TextureWrapMode.Mirror => "mirrored-repeat",
+				// NOTE: Cocos does not support MirrorOnce.
+				TextureWrapMode.MirrorOnce => "mirrored-repeat",
+				_ => "repeat"
+			};
+		}
+
+		public static string TextureFilterModeToCocos(FilterMode mode)
+		{
+			return mode switch
+			{
+				FilterMode.Point => "nearest",
+				FilterMode.Bilinear => "linear",
+				FilterMode.Trilinear => "linear",
+				_ => "nearest"
+			};
+		}
+
+		public static string TextureFilterModeToCocosMipFilter(FilterMode mode)
+		{
+			return mode switch
+			{
+				FilterMode.Point => "none",
+				FilterMode.Bilinear => "nearest",
+				FilterMode.Trilinear => "linear",
+				_ => "none"
+			};
+		}
+		
+		public static int TextureAnisoToCocos(int anisoLevel)
+		{
+			var shift = ExportSetting.Instance.Advanced.TextureAnisoLevelShift;
+			return Mathf.Max(anisoLevel + shift, 0);
 		}
 	}
 }

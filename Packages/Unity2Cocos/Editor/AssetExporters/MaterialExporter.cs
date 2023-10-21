@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Unity2Cocos;
 
@@ -8,7 +9,7 @@ namespace cc
 	{
 	}
 
-	public class MaterialDefine
+	public class MaterialDefine : Dictionary<string, bool>
 	{
 	}
 	
@@ -24,7 +25,7 @@ namespace cc
 		public object[] targets = new object[1];
 	}
 
-	public class MaterialProp
+	public class MaterialProp : Dictionary<string, object>
 	{
 	}
 
@@ -33,9 +34,9 @@ namespace cc
 		public string _native = "";
 		public AssetReference<EffectAsset> _effectAsset;
 		public int _techIdx = 0;
-		public MaterialDefine[] _defines = Array.Empty<MaterialDefine>();
-		public MaterialState[] _states = Array.Empty<MaterialState>();
-		public MaterialProp[] _props = Array.Empty<MaterialProp>();
+		public MaterialDefine[] _defines;
+		public MaterialState[] _states;
+		public MaterialProp[] _props;
 	}
 }
 

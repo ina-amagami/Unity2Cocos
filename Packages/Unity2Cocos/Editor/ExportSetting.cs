@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using Newtonsoft.Json.Converters;
-using UnityEngine.Serialization;
 
 namespace Unity2Cocos
 {
@@ -14,8 +12,22 @@ namespace Unity2Cocos
 		
 		public List<SceneAsset> Scenes = new();
 		public List<AssetMapper> AssetMappers = new();
-		public bool ConvertToRightHanded = true;
-		public bool ConvertPathFormat = true;
+		public bool ExportWebLikePaths = true;
+		
+		[Serializable]
+		public class AdvancedSettings
+		{
+			/// <summary>
+			/// Convert from the left-hand coordinate system to the right-hand coordinate system.
+			/// Normally ON
+			/// </summary>
+			public bool ConvertToRightHanded = true;
+			/// <summary>
+			/// Default Unity's aniso = 2, Cocos = 0
+			/// </summary>
+			[Range(-2, 0)] public int TextureAnisoLevelShift = -2;
+		}
+		public AdvancedSettings Advanced;
 
 		private void Reset()
 		{
