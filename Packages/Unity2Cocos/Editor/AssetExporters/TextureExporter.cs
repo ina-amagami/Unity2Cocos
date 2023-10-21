@@ -28,7 +28,7 @@ namespace Unity2Cocos
 			public string id;
 			public string name;
 			
-			public class SubTextureUserData
+			public class UserData
 			{
 				public string wrapModeS;
 				public string wrapModeT;
@@ -40,7 +40,7 @@ namespace Unity2Cocos
 				public string imageUuidOrDatabaseUri;
 			}
 			
-			public class NormalMapUserData : SubTextureUserData
+			public class NormalMapUserData : UserData
 			{
 				public bool visible = false;
 			}
@@ -56,16 +56,16 @@ namespace Unity2Cocos
 			}
 		}
 		
-		private class UserData
-		{
-			public bool fixAlphaTransparencyArtifacts = true;
-			public bool hasAlpha;
-			public string type;
-			public string redirect;
-		}
-		
 		private class Meta : cc.Meta
 		{
+			public class UserData
+			{
+				public bool fixAlphaTransparencyArtifacts = true;
+				public bool hasAlpha;
+				public string type;
+				public string redirect;
+			}
+			
 			public Meta()
 			{
 				ver = "1.0.26";
@@ -110,7 +110,7 @@ namespace Unity2Cocos
 				name = isNormalMap ? "normalMap" : "texture"
 			};
 			var subUserData = isNormalMap
-				? new SubMeta.SubTextureUserData()
+				? new SubMeta.UserData()
 				: new SubMeta.NormalMapUserData();
 			subUserData.wrapModeS = Utils.TextureWrapModeToCocos(importer.wrapModeU);
 			subUserData.wrapModeT = Utils.TextureWrapModeToCocos(importer.wrapModeV);
@@ -122,7 +122,7 @@ namespace Unity2Cocos
 			subMetas.Add(subAssetUuid, subMeta);
 			ccMeta.subMetas = subMetas;
 			
-			ccMeta.userData = new UserData()
+			ccMeta.userData = new Meta.UserData()
 			{
 				hasAlpha = importer.DoesSourceTextureHaveAlpha(),
 				type = importer.textureType switch

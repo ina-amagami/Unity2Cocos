@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity2Cocos;
+using UnityEditor;
 
 namespace cc
 {
@@ -58,6 +59,13 @@ namespace Unity2Cocos
 		
 		public override string Export(Material asset)
 		{
+			var mainAsset = AssetDatabase.LoadMainAssetAtPath(Info.UnityAssetPath);
+			if (mainAsset != asset)
+			{
+				Debug.LogWarning($"[MaterialExporter] Material included in model assets is not supported. -> {Info.UnityAssetName}");
+				return string.Empty;
+			}
+			
 			var ccMat = Converter.ConvertMaterial(asset);
 			var ccMeta = new Meta();
 			ExportAssetToJson(ccMat);

@@ -76,7 +76,12 @@ namespace Unity2Cocos
 
 		public static void AddAssetMap(UnityEngine.Object asset, string uuid)
 		{
-			_assetMap.Add(asset.GetHashCode(), uuid);
+			var key = asset.GetHashCode();
+			if (_assetMap.ContainsKey(key))
+			{
+				return;
+			}
+			_assetMap.Add(key, uuid);
 		}
 
 		private static string GetMappedAssetUuid(UnityEngine.Object asset)

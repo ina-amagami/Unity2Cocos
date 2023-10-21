@@ -19,7 +19,7 @@ namespace Unity2Cocos
 
 	public abstract class AssetExporter
 	{
-		protected struct ExportInfo
+		public class ExportInfo
 		{
 			public string OutputFolderPath;
 			public string UnityAssetPath;
@@ -63,26 +63,38 @@ namespace Unity2Cocos
 		
 		protected void ExportAssetCopy()
 		{
-			Directory.CreateDirectory(Path.Combine(Info.OutputFolderPath, Info.CocosAssetDirectory));
-			if (File.Exists(Info.CocosAssetOutputPath))
+			ExportAssetCopy(Info);
+		}
+		public static void ExportAssetCopy(ExportInfo info)
+		{
+			Directory.CreateDirectory(Path.Combine(info.OutputFolderPath, info.CocosAssetDirectory));
+			if (File.Exists(info.CocosAssetOutputPath))
 			{
-				File.Delete(Info.CocosAssetOutputPath);
+				File.Delete(info.CocosAssetOutputPath);
 			}
-			File.Copy(Info.UnityAssetPath, Info.CocosAssetOutputPath);
+			File.Copy(info.UnityAssetPath, info.CocosAssetOutputPath);
 		}
 		
-		protected void ExportAssetToJson<TCCAsset>(TCCAsset asset)
+		protected void ExportAssetToJson(object asset)
 		{
-			Directory.CreateDirectory(Path.Combine(Info.OutputFolderPath, Info.CocosAssetDirectory));
+			ExportAssetToJson(asset, Info);
+		}
+		public static void ExportAssetToJson(object asset, ExportInfo info)
+		{
+			Directory.CreateDirectory(Path.Combine(info.OutputFolderPath, info.CocosAssetDirectory));
 			var jsonString = JsonConvert.SerializeObject(asset, Formatting.Indented);
-			File.WriteAllText(Info.CocosAssetOutputPath, jsonString);
+			File.WriteAllText(info.CocosAssetOutputPath, jsonString);
 		}
 
-		protected void ExportMeta<TMeta>(TMeta meta)
+		protected void ExportMeta(object meta)
 		{
-			Directory.CreateDirectory(Path.Combine(Info.OutputFolderPath, Info.CocosAssetDirectory));
+			ExportMeta(meta, Info);
+		}
+		public static void ExportMeta(object meta, ExportInfo info)
+		{
+			Directory.CreateDirectory(Path.Combine(info.OutputFolderPath, info.CocosAssetDirectory));
 			var jsonString = JsonConvert.SerializeObject(meta, Formatting.Indented);
-			File.WriteAllText(Info.CocosMetaOutputPath, jsonString);
+			File.WriteAllText(info.CocosMetaOutputPath, jsonString);
 		}
 	}
 

@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace cc
@@ -14,12 +14,24 @@ namespace Unity2Cocos
 	[AssetExporter(typeof(Mesh))]
 	public class MeshExporter : AssetExporter<Mesh>
 	{
-		protected override string Extension => ".mesh";
+		protected override string Extension => "";
 		
 		public override string Export(Mesh asset)
 		{
-			// Mesh export is not supported.
-			return string.Empty;
+			var mainAsset = AssetDatabase.LoadMainAssetAtPath(Info.UnityAssetPath);
+			if (mainAsset == asset)
+			{
+				Debug.LogWarning($"[MeshExporter] Mesh-only asset is not supported. -> {Info.UnityAssetName}");
+				return string.Empty;
+			}
+
+			if (!Path.GetExtension(Info.UnityAssetName).Equals(".fbx"))
+			{
+				Debug.LogWarning($"[MeshExporter] Only FBX is supported. -> {Info.UnityAssetName}");
+				return string.Empty;
+			}
+
+			return FBXExporter.Export(Info, asset);
 		}
 	}
 }
