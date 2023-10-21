@@ -16,7 +16,7 @@ namespace Unity2Cocos
 	{
 		protected override string Extension => ".mesh";
 		
-		public override string Export(Mesh asset, string outputFolderPath)
+		public override string Export(Mesh asset)
 		{
 			// Mesh export is not supported.
 			return string.Empty;

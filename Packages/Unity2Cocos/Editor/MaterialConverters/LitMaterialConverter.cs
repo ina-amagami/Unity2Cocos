@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
 using cc;
-using UnityEngine;
-using Mesh = cc.Mesh;
 
 namespace Unity2Cocos
 {
@@ -10,13 +6,11 @@ namespace Unity2Cocos
 	/// URP Lit to Cocos Standard Material.
 	/// </summary>
 	[MaterialConverter("Universal Render Pipeline/Lit")]
-	public class LitMaterialConverter : MaterialConverter
+	public class LitMaterialConverter : StandardMaterialConverter
 	{
 		public override cc.Material Convert(UnityEngine.Material material)
 		{
-			var ccMat = new cc.Material()
-			{
-			};
+			var ccMat = GetStandardMaterial(material);
 			return ccMat;
 		}
 	}

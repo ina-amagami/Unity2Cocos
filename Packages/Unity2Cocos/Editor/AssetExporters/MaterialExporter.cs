@@ -8,14 +8,34 @@ namespace cc
 	{
 	}
 
+	public class MaterialDefine
+	{
+	}
+	
+	public class MaterialState
+	{
+		public object rasterizerState = new();
+		public object depthStencilState = new();
+		public BlendState blendState = new();
+	}
+		
+	public class BlendState
+	{
+		public object[] targets = new object[1];
+	}
+
+	public class MaterialProp
+	{
+	}
+
 	public class Material : Asset
 	{
 		public string _native = "";
-		public AssetReference<EffectAsset> _effectAsset = new(MaterialConverter.CocosStandardShaderUuid);
+		public AssetReference<EffectAsset> _effectAsset;
 		public int _techIdx = 0;
-		public object[] _defines = Array.Empty<object>();
-		public object[] _states = Array.Empty<object>();
-		public object[] _props = Array.Empty<object>();
+		public MaterialDefine[] _defines = Array.Empty<MaterialDefine>();
+		public MaterialState[] _states = Array.Empty<MaterialState>();
+		public MaterialProp[] _props = Array.Empty<MaterialProp>();
 	}
 }
 
@@ -35,12 +55,13 @@ namespace Unity2Cocos
 
 		protected override string Extension => ".mtl";
 		
-		public override string Export(Material asset, string outputFolderPath)
+		public override string Export(Material asset)
 		{
 			var ccMat = Converter.ConvertMaterial(asset);
 			var ccMeta = new Meta();
-			
-			return string.Empty;
+			ExportAssetToJson(ccMat);
+			ExportMeta(ccMeta);
+			return ccMeta.uuid;
 		}
 	}
 }

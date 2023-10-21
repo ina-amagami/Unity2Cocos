@@ -110,7 +110,7 @@ namespace Unity2Cocos
 			}
 			Debug.LogWarning(
 				$"[Material] Unsupported shader, export standard material. -> {material.name}<{shader}>");
-			return new cc.Material();
+			return StandardMaterialConverter.GetStandardMaterial(material);
 		}
 	}
 }

@@ -141,31 +141,22 @@ namespace Unity2Cocos
 
 		protected override string Extension => ".scene";
 	
-		public override string Export(UnityEditor.SceneAsset asset, string outputFolderPath)
+		public override string Export(UnityEditor.SceneAsset asset)
 		{
-			var assetPath = AssetDatabase.GetAssetPath(asset);
-			var assetDirectory = Path.GetDirectoryName(assetPath);
-			var assetName = Path.GetFileNameWithoutExtension(assetPath);
-
-			var ccAssetDirectory = Utils.ConvertToOutputPathFormat(assetDirectory);
-			var ccAssetName = Utils.ConvertToOutputPathFormat(assetName);
-			var ccAssetPath = Path.Combine(ccAssetDirectory, ccAssetName);
-			Directory.CreateDirectory(Path.Combine(outputFolderPath, ccAssetDirectory));
-			var outputPath = Path.Combine(outputFolderPath, ccAssetPath);
 			var ccMeta = new Meta();
 			var ccAsset = new List<CCType>();
 			
 			// SceneAsset
 			var ccSceneAsset = new cc.SceneAsset()
 			{
-				_name = ccAssetName
+				_name = Info.CocosAssetName
 			};
 			ccAsset.Add(ccSceneAsset);
 			
 			// Scene
 			var ccScene = new cc.Scene()
 			{
-				_name = ccAssetName,
+				_name = Info.CocosAssetName,
 				_id = ccMeta.uuid,
 				_lpos = new() { x = 0, y = 0, z = 0 },
 				_lrot = new() { x = 0, y = 0, z = 0, w = 1 },
@@ -174,7 +165,7 @@ namespace Unity2Cocos
 			ccAsset.Add(ccScene);
 			
 			// Node & Components
-			EditorSceneManager.OpenScene(assetPath);
+			EditorSceneManager.OpenScene(Info.UnityAssetPath);
 			var rootGameObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
 			foreach (var root in rootGameObjects)
 			{
@@ -203,8 +194,8 @@ namespace Unity2Cocos
 			ccAsset.Add(new LightProbeInfo());
 			
 			// Export scene.
-			ExportAssetToJson(ccAsset, outputPath);
-			ExportMeta(ccMeta, outputPath);
+			ExportAssetToJson(ccAsset);
+			ExportMeta(ccMeta);
 
 			return ccMeta.uuid;
 		}

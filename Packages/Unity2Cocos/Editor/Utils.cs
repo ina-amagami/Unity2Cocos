@@ -24,6 +24,12 @@ namespace Unity2Cocos
 			return base64EncodedUuid.TrimEnd('=');
 		}
 		
+		// FIXME: Cocos sub-asset UUID generation rules are unknown.
+		public static string NewSubAssetUuid()
+		{
+			return Guid.NewGuid().ToString().Substring(0, 5);
+		}
+		
 		public static IEnumerable<Type> GetTypesIsSubclassOf<T>()
 		{
 			return Assembly.GetAssembly(typeof(T))
@@ -55,14 +61,27 @@ namespace Unity2Cocos
 			input = string.Empty;
 			for (var i = 0; i < paths.Length; ++i)
 			{
-				input += string.Concat(paths[i].Select(
-					(x, i) => i > 0 && char.IsUpper(x) ? $"-{x.ToString()}" : x.ToString()));
+				var path = paths[i];
+				input += string.Concat(path.Select(
+					(x, charIdx) =>
+					{
+						if (x.Equals('_'))
+						{
+							return "-";
+						}
+						if (charIdx > 0 && char.IsUpper(x) &&
+						    !char.IsUpper(path[charIdx - 1]))
+						{
+							return $"-{x}";
+						}
+						return x.ToString();
+					}));
 				if (i < paths.Length - 1)
 				{
 					input += '/';
 				}
 			}
-			return input.ToLower();
+			return input.Replace("--", "-").ToLower();
 		}
 
 		public static string GetTransformPath(Transform t)
@@ -105,6 +124,11 @@ namespace Unity2Cocos
 		public static Vec3 EulerAnglesToVec3(Vector3 ea)
 		{
 			return new Vec3 { x = -ea.x, y = -ea.y, z = ea.z };
+		}
+		
+		public static cc.Color Color32ToCocosColor(Color32 color)
+		{
+			return new() { r = color.r, g = color.g, b = color.b, a = color.a };
 		}
 	}
 }
