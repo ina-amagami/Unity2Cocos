@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 namespace Unity2Cocos
 {
@@ -13,6 +14,13 @@ namespace Unity2Cocos
 		public List<SceneAsset> Scenes = new();
 		public List<AssetMapper> AssetMappers = new();
 		public bool ExportWebLikePaths = true;
+
+		public enum MeshIDMatchMethodType
+		{
+			MeshName,
+			Triangles,
+		}
+		public MeshIDMatchMethodType meshIDMatchMethod = MeshIDMatchMethodType.MeshName;
 		
 		[Serializable]
 		public class AdvancedSettings

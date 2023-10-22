@@ -54,6 +54,8 @@ namespace Unity2Cocos
 		
 		public static string Export(AssetExporter.ExportInfo info, Object source)
 		{
+			var meshMatchMethod = ExportSetting.Instance.meshIDMatchMethod;
+			
 			var ccMeta = new Meta();
 			var subMetas = new Dictionary<string, object>();
 			var userData = new Meta.UserData();
@@ -77,8 +79,17 @@ namespace Unity2Cocos
 				
 				// FIXME: Originally, a 5-digit hex value is assigned after @ by Cocos,
 				// but due to the unknown calculation method,
-				// the mesh index is assigned and resolved later by executing a Python script.
-				subMeta.uuid = $"{ccMeta.uuid}@mesh:{i.ToString()}";
+				// the mesh name or triangles count assigned and resolved later by executing a Python script.
+				switch (meshMatchMethod)
+				{
+					case ExportSetting.MeshIDMatchMethodType.MeshName:
+						subMeta.uuid = $"{ccMeta.uuid}@mesh-name:{mesh.name}.mesh";
+						break;
+					
+					case ExportSetting.MeshIDMatchMethodType.Triangles:
+						subMeta.uuid = $"{ccMeta.uuid}@mesh-triangles:{mesh.triangles.Length / 3}";
+						break;
+				}
 				
 				// if (!userData.assetFinder.TryGetValue("meshes", out var list))
 				// {
