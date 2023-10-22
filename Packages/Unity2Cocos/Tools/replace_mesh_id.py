@@ -60,19 +60,19 @@ def replace_uuid(content, meta_files, uuid, value, search_key):
         mesh_entries = [entry for entry_key, entry in meta_content.get('subMetas', {}).items() if entry.get('name', '').endswith('.mesh')]
 
         found_id = None
-        # if len(mesh_entries) == 1:
-        #     found_id = mesh_entries[0].get('id')
-        # else:
-        for entry in mesh_entries:
-            if search_key == 'triangleCount':
-                user_data = entry.get('userData')
-                if user_data.get(search_key) == value:
-                    found_id = entry.get('id')
-                    break
-            elif search_key == 'name':
-                if entry.get(search_key) == value:
-                    found_id = entry.get('id')
-                    break
+        if len(mesh_entries) == 1:
+            found_id = mesh_entries[0].get('id')
+        else:
+            for entry in mesh_entries:
+                if search_key == 'triangleCount':
+                    user_data = entry.get('userData')
+                    if user_data.get(search_key) == value:
+                        found_id = entry.get('id')
+                        break
+                elif search_key == 'name':
+                    if entry.get(search_key) == value:
+                        found_id = entry.get('id')
+                        break
 
         if found_id:
             if search_key == 'name':
