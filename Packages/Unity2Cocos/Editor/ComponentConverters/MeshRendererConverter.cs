@@ -49,6 +49,7 @@ namespace Unity2Cocos
 			var mesh = component.GetComponent<MeshFilter>().sharedMesh;
 			var ccMeshRenderer = new cc.MeshRenderer
 			{
+				_enabled = component.enabled,
 				_mesh = new AssetReference<Mesh>(Exporter.GetUuidOrExportAsset(mesh)),
 				_materials = component.sharedMaterials.Select(mat => 
 					new AssetReference<cc.Material>(Exporter.GetUuidOrExportAsset(mat))).ToArray(),
