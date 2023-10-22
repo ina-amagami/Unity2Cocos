@@ -1,8 +1,22 @@
 # Unity 2 Cocos
 
-Export scenes and assets created in Unity to CocosCreator.
+Export 3D scenes and assets created in Unity to CocosCreator.
 
 NOTE: This is an experimental project.
+
+## Under development
+
+- Some meshes are not placed in the correct position.
+- Support more material property convert.
+- Support more 3D feature. (Camera / Light / Reflection Probe / Collider / Rigidbody etc)
+- TypeScript only generate and set property. (don't create logic)
+
+## Caution
+
+The following will not be supported.
+
+- ParticleSystem / 2D Feature / uGUI convert.
+- Prefab / Audio / Animation export.
 
 ## Install
 
