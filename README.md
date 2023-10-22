@@ -23,9 +23,11 @@ To install via upm, specify `https://github.com/ina-amagami/Cocos2Unity.git?path
 - Unity 2022.3.11f1 / URP 14.0.9
 - Cocos Creator 3.8
 
-## License
+## Package License
 
 This software is released under the MIT License.
 https://opensource.org/licenses/mit-license.php
 
 Copyright (c) 2023 ina-amagami / Amagamina Games, Inc. (ina@amagamina.jp)
+
+The UniversalRenderPipeline sample scenes included in the repository were created by Unity Software Inc.
