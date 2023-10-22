@@ -77,8 +77,8 @@ namespace Unity2Cocos
 				
 				// FIXME: Originally, a 5-digit hex value is assigned after @ by Cocos,
 				// but due to the unknown calculation method,
-				// the mesh name is assigned and resolved later by executing a Python script.
-				subMeta.uuid = $"{ccMeta.uuid}@{mesh.name}.mesh";
+				// the mesh index is assigned and resolved later by executing a Python script.
+				subMeta.uuid = $"{ccMeta.uuid}@mesh:{i.ToString()}";
 				
 				// if (!userData.assetFinder.TryGetValue("meshes", out var list))
 				// {

@@ -58,7 +58,7 @@ namespace Unity2Cocos
 				input += string.Concat(path.Select(
 					(x, charIdx) =>
 					{
-						if (x.Equals('_'))
+						if (x.Equals('_') || x.Equals(' '))
 						{
 							return "-";
 						}
