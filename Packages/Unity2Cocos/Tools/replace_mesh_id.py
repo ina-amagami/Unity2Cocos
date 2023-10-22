@@ -13,12 +13,10 @@ def replace_uuid_with_id(scene_path, meta_files):
             with open(meta_file, 'r', encoding='utf-8') as meta_f:
                 meta_content = meta_f.read()
                 if uuid in meta_content:
-                    # UUIDが存在する場合、IDを探す
                     meta_data = json.loads(meta_content)
                     for key, value in meta_data["subMetas"].items():
                         if value["name"] == mesh_name:
                             id_ = key
-                            # UUIDをUUID@IDに置き換える
                             content = content.replace(f"{uuid}@{mesh_name}", f"{uuid}@{id_}")
 
     with open(scene_path, 'w', encoding='utf-8') as f:
