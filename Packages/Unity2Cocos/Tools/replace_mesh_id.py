@@ -28,9 +28,16 @@ def main(folder_path):
     scene_files = [f for f in files if f.endswith(".scene")]
     meta_files = [f for f in files if f.endswith(".fbx.meta")]
 
+    if (len(scene_files) == 0):
+        print("No scene.")
+        return
+        
     for scene_file in scene_files:
+        print(f"Scene: {scene_file}")
         replace_uuid_with_id(scene_file, meta_files)
 
 if __name__ == "__main__":
     folder_path = input("Enter the folder path: ")
+    print("--- replace mesh id start ---")
     main(folder_path)
+    print("--- replace mesh id end ---")
