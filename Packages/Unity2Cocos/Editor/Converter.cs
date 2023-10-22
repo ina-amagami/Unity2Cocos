@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using UnityEngine;
 using cc;
+using UnityEditor;
 
 namespace Unity2Cocos
 {
@@ -42,8 +41,49 @@ namespace Unity2Cocos
 				_materialConverters.Add(attribute.Shader, (MaterialConverter)Activator.CreateInstance(converter));
 			}
 		}
+		
+		private struct RightHandedConvertInfo
+		{
+			public readonly Vector3 OrigLocalPosition;
+			public readonly Quaternion OrigLocalRotation;
+			public readonly Vector3 Position;
+			public readonly Quaternion Rotation;
 
-		public static void ConvertHierarchy(int parent, Transform t, List<CCType> list)
+			public RightHandedConvertInfo(Transform t)
+			{
+				var origPosition = t.position;
+				OrigLocalPosition = t.localPosition;
+				OrigLocalRotation = t.localRotation;
+				Position = new Vector3(origPosition.x, origPosition.y, -origPosition.z);
+				Rotation = t.rotation;
+			}
+		}
+		private static readonly Dictionary<int, RightHandedConvertInfo> _rightHandedConvertInfos = new();
+		private static bool IsRightHanded => ExportSetting.Instance.Advanced.ConvertToRightHanded;
+
+		public static void ConvertHierarchy(Transform root, List<CCType> list)
+		{
+			if (!IsRightHanded)
+			{
+				ConvertTransformAndChildren(1, root, list);
+				return;
+			}
+			_rightHandedConvertInfos.Clear();
+			var transforms = root.GetComponentsInChildren<Transform>(true);
+			foreach (var t in transforms)
+			{
+				_rightHandedConvertInfos.Add(t.GetHashCode(), new RightHandedConvertInfo(t));
+			}
+			ConvertTransformAndChildren(1, root, list);
+			foreach (var t in transforms)
+			{
+				var info = _rightHandedConvertInfos[t.GetHashCode()];
+				t.localPosition = info.OrigLocalPosition;
+				t.localRotation = info.OrigLocalRotation;
+			}
+		}
+
+		private static void ConvertTransformAndChildren(int parent, Transform t, List<CCType> list)
 		{
 			var id = list.Count;
 			var node = TransformToNode(t);
@@ -83,21 +123,48 @@ namespace Unity2Cocos
 			for (var i = 0; i < t.childCount; ++i)
 			{
 				node._children.Add(new SceneNodeId(list.Count));
-				ConvertHierarchy(id, t.GetChild(i), list);
+				ConvertTransformAndChildren(id, t.GetChild(i), list);
 			}
 		}
 
 		private static Node TransformToNode(Transform t)
 		{
+			var p = t.localPosition;
+			var r = t.localRotation;
+			if (IsRightHanded)
+			{
+				var info = _rightHandedConvertInfos[t.GetHashCode()];
+				t.position = info.Position;
+				if (!t.TryGetComponent<UnityEngine.Camera>(out _) &&
+				    !t.TryGetComponent<UnityEngine.Light>(out _))
+				{
+					t.rotation = Quaternion.AngleAxis(180f, Vector3.up) * info.Rotation;
+				}
+				else
+				{
+					t.rotation = info.Rotation;
+				}
+				p = t.localPosition;
+				r = t.localRotation;
+				
+				// BUG: Rotation of x and z doesn't work correctly.
+				r = new Quaternion(-r.x, -r.y, r.z, r.w);
+			}
+			if (t.TryGetComponent<UnityEngine.MeshRenderer>(out _))
+			{
+				// In Cocos, meshes below FBX have a value of 0.
+				// BUG: If the parent is not the root of the FBX model, it will not work correctly.
+				p = Vector3.zero;
+			}
 			return new Node
 			{
 				_name = t.name,
 				_active = t.gameObject.activeSelf,
-				_lpos = Utils.Vector3ToVec3(t.localPosition),
-				_lrot = Utils.QuaternionToQuat(t.localRotation),
+				_lpos = Utils.Vector3ToVec3(p),
+				_lrot = Utils.QuaternionToQuat(r),
 				_lscale = new Vec3 { x = t.localScale.x, y = t.localScale.y, z = t.localScale.z },
 				_mobility = t.gameObject.isStatic ? 0 : 2,
-				_euler = Utils.EulerAnglesToVec3(t.localEulerAngles),
+				_euler = Utils.EulerAnglesToVec3(r.eulerAngles),
 			};
 		}
 

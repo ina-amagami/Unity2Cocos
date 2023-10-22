@@ -170,7 +170,7 @@ namespace Unity2Cocos
 			foreach (var root in rootGameObjects)
 			{
 				ccScene._children.Add(new SceneNodeId(ccAsset.Count));
-				Converter.ConvertHierarchy(1, root.transform, ccAsset);
+				Converter.ConvertHierarchy(root.transform, ccAsset);
 			}
 			
 			// Scene Globals

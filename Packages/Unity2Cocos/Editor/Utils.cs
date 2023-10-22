@@ -94,29 +94,19 @@ namespace Unity2Cocos
 			return string.Concat(names.Select((s, i) => s + (i == names.Count - 1 ? "" : "/")));
 		}
 
-		public static bool ConvertToRightHanded => ExportSetting.Instance.Advanced.ConvertToRightHanded;
-		
 		public static Vec3 Vector3ToVec3(Vector3 v)
 		{
-			return ConvertToRightHanded ? new Vec3 {
-				x = v.x, y = v.y, z = -v.z
-			} : new Vec3 {
-				x = v.x, y = v.y, z = v.z
-			};
+			return new Vec3 { x = v.x, y = v.y, z = v.z };
 		}
 		
 		public static Quat QuaternionToQuat(Quaternion q)
 		{
-			return ConvertToRightHanded ? new Quat {
-				x = -q.x, y = -q.y, z = q.z, w = q.w
-			} : new Quat {
-				x = q.x, y = q.y, z = q.z, w = q.w
-			};
+			return new Quat { x = q.x, y = q.y, z = q.z, w = q.w };
 		}
 		
 		public static Vec3 EulerAnglesToVec3(Vector3 ea)
 		{
-			return new Vec3 { x = -ea.x, y = -ea.y, z = ea.z };
+			return new Vec3 { x = ea.x, y = ea.y, z = ea.z };
 		}
 		
 		public static cc.Color Color32ToCocosColor(Color32 color)
