@@ -20,5 +20,5 @@ MonoBehaviour:
   ExportWebLikePaths: 1
   meshIDMatchMethod: 0
   Advanced:
-    ConvertToRightHanded: 0
+    ConvertToRightHanded: 1
     TextureAnisoLevelShift: -1

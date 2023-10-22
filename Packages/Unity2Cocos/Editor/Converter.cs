@@ -42,45 +42,11 @@ namespace Unity2Cocos
 			}
 		}
 		
-		private struct RightHandedConvertInfo
-		{
-			public readonly Vector3 OrigLocalPosition;
-			public readonly Quaternion OrigLocalRotation;
-			public readonly Vector3 Position;
-			public readonly Quaternion Rotation;
-
-			public RightHandedConvertInfo(Transform t)
-			{
-				var origPosition = t.position;
-				OrigLocalPosition = t.localPosition;
-				OrigLocalRotation = t.localRotation;
-				Position = new Vector3(origPosition.x, origPosition.y, -origPosition.z);
-				Rotation = t.rotation;
-			}
-		}
-		private static readonly Dictionary<int, RightHandedConvertInfo> _rightHandedConvertInfos = new();
 		private static bool IsRightHanded => ExportSetting.Instance.Advanced.ConvertToRightHanded;
 
 		public static void ConvertHierarchy(Transform root, List<CCType> list)
 		{
-			if (!IsRightHanded)
-			{
-				ConvertTransformAndChildren(1, root, list);
-				return;
-			}
-			_rightHandedConvertInfos.Clear();
-			var transforms = root.GetComponentsInChildren<Transform>(true);
-			foreach (var t in transforms)
-			{
-				_rightHandedConvertInfos.Add(t.GetHashCode(), new RightHandedConvertInfo(t));
-			}
 			ConvertTransformAndChildren(1, root, list);
-			foreach (var t in transforms)
-			{
-				var info = _rightHandedConvertInfos[t.GetHashCode()];
-				t.localPosition = info.OrigLocalPosition;
-				t.localRotation = info.OrigLocalRotation;
-			}
 		}
 
 		private static void ConvertTransformAndChildren(int parent, Transform t, List<CCType> list)
@@ -133,21 +99,7 @@ namespace Unity2Cocos
 			var r = t.localRotation;
 			if (IsRightHanded)
 			{
-				var info = _rightHandedConvertInfos[t.GetHashCode()];
-				t.position = info.Position;
-				if (!t.TryGetComponent<UnityEngine.Camera>(out _) &&
-				    !t.TryGetComponent<UnityEngine.Light>(out _))
-				{
-					t.rotation = Quaternion.AngleAxis(180f, Vector3.up) * info.Rotation;
-				}
-				else
-				{
-					t.rotation = info.Rotation;
-				}
-				p = t.localPosition;
-				r = t.localRotation;
-				
-				// BUG: Rotation of x and z doesn't work correctly.
+				p.z = -p.z;
 				r = new Quaternion(-r.x, -r.y, r.z, r.w);
 			}
 			if (t.TryGetComponent<UnityEngine.MeshRenderer>(out _))
@@ -155,6 +107,8 @@ namespace Unity2Cocos
 				// In Cocos, meshes below FBX have a value of 0.
 				// BUG: If the parent is not the root of the FBX model, it will not work correctly.
 				p = Vector3.zero;
+				// BUG: Doesn't work correctly when nested mesh.
+				r *= Quaternion.AngleAxis(180f, Vector3.up);
 			}
 			return new Node
 			{
