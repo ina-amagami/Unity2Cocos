@@ -1,0 +1,258 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c",
+  "files": [],
+  "subMetas": {
+    "30506": {
+      "importer": "gltf-material",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@30506",
+      "displayName": "",
+      "id": "30506",
+      "name": "plastic_ridges.material",
+      "userData": {
+        "gltfIndex": 5
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "87122": {
+      "importer": "gltf-material",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@87122",
+      "displayName": "",
+      "id": "87122",
+      "name": "plastic_worn.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "38f96": {
+      "importer": "gltf-mesh",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@38f96",
+      "displayName": "",
+      "id": "38f96",
+      "name": "bench_legs.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 576
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "56ec6": {
+      "importer": "gltf-mesh",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@56ec6",
+      "displayName": "",
+      "id": "56ec6",
+      "name": "supports.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 9219
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a61d6": {
+      "importer": "gltf-mesh",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@a61d6",
+      "displayName": "",
+      "id": "a61d6",
+      "name": "upper_covers.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 1784
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "4d66d": {
+      "importer": "gltf-mesh",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@4d66d",
+      "displayName": "",
+      "id": "4d66d",
+      "name": "bench_bottom.mesh",
+      "userData": {
+        "gltfIndex": 3,
+        "triangleCount": 652
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9736": {
+      "importer": "gltf-mesh",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@f9736",
+      "displayName": "",
+      "id": "f9736",
+      "name": "bench_top.mesh",
+      "userData": {
+        "gltfIndex": 4,
+        "triangleCount": 1520
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8182b": {
+      "importer": "gltf-material",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@8182b",
+      "displayName": "",
+      "id": "8182b",
+      "name": "plastic_black.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a58a8": {
+      "importer": "gltf-material",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@a58a8",
+      "displayName": "",
+      "id": "a58a8",
+      "name": "aluminum.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "461a3": {
+      "importer": "gltf-material",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@461a3",
+      "displayName": "",
+      "id": "461a3",
+      "name": "plastic_grey.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "63d4a": {
+      "importer": "gltf-material",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@63d4a",
+      "displayName": "",
+      "id": "63d4a",
+      "name": "plastic_yellow.material",
+      "userData": {
+        "gltfIndex": 4
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "fd8b8": {
+      "importer": "gltf-scene",
+      "uuid": "f97892bb-17ed-4f3a-adab-6239d58b163c@fd8b8",
+      "displayName": "",
+      "id": "fd8b8",
+      "name": "workbench.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "fbx": {
+      "smartMaterialEnabled": false
+    },
+    "assetFinder": {
+      "meshes": [
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@38f96",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@56ec6",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@a61d6",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@4d66d",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@f9736"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@8182b",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@a58a8",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@461a3",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@87122",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@63d4a",
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@30506"
+      ],
+      "scenes": [
+        "f97892bb-17ed-4f3a-adab-6239d58b163c@fd8b8"
+      ]
+    },
+    "imageMetas": [],
+    "redirect": "f97892bb-17ed-4f3a-adab-6239d58b163c@fd8b8",
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}
