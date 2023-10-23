@@ -32,7 +32,7 @@ namespace Unity2Cocos
 			var setting = ExportSetting.Instance;
 			InitializeAssetMapping(setting.AssetMappers);
 			CacheExporter();
-			Converter.CacheConverter();
+			Converter.Initialize();
 
 			// Export scenes.
 			EditorUtility.DisplayProgressBar(

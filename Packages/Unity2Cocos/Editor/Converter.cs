@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 using cc;
 using UnityEditor;
@@ -12,8 +14,10 @@ namespace Unity2Cocos
 		private static readonly Dictionary<Type, ComponentConverter> _componentConverters = new();
 		private static readonly Dictionary<string, MaterialConverter> _materialConverters = new();
 
-		public static void CacheConverter()
+		public static void Initialize()
 		{
+			_meshDefaultPositions.Clear();
+			
 			// Component Converter
 			_componentConverters.Clear();
 			var converters = Utils.GetTypesIsSubclassOf<ComponentConverter>();
@@ -93,6 +97,8 @@ namespace Unity2Cocos
 				ConvertTransformAndChildren(id, t.GetChild(i), list);
 			}
 		}
+		
+		private static readonly Dictionary<int, Vector3> _meshDefaultPositions = new();
 
 		private static Node TransformToNode(Transform t)
 		{
@@ -106,21 +112,34 @@ namespace Unity2Cocos
 			if (t.TryGetComponent<UnityEngine.MeshFilter>(out var meshFilter))
 			{
 				// In Cocos, meshes below FBX have a value of 0.
-				// BUG: If the parent is not the root of the FBX model, it will not work correctly.
-				var renderer = meshFilter.GetComponent<MeshRenderer>();
-				p.z = -p.z;
-				var shift = t.rotation * renderer.bounds.center;
-				p -= new Vector3(-shift.x, shift.y, -shift.z);
-				shift = t.rotation * meshFilter.sharedMesh.bounds.center;
-				p += new Vector3(-shift.x, shift.y, -shift.z);
-				if (t.parent)
+				// Instantiate Mesh, check initial coordinates, and take diff.
+				var hash = meshFilter.sharedMesh.GetHashCode();
+				if (!_meshDefaultPositions.TryGetValue(hash, out var defaultPos))
 				{
-					shift = t.parent.transform.rotation * t.parent.transform.position;
-					p += new Vector3(-shift.x, shift.y, -shift.z);
+					var assetPath = AssetDatabase.GetAssetPath(meshFilter.sharedMesh);
+					if (Path.GetExtension(assetPath) == ".fbx")
+					{
+						var root = AssetDatabase.LoadMainAssetAtPath(assetPath) as GameObject;
+						if (root)
+						{
+							var obj = GameObject.Instantiate(root);
+							defaultPos = obj.GetComponentsInChildren<MeshFilter>()
+								.FirstOrDefault(x => x.sharedMesh.Equals(meshFilter.sharedMesh))!
+								.transform.localPosition;
+							GameObject.DestroyImmediate(obj);
+						}
+					}
+					_meshDefaultPositions.Add(hash, defaultPos);
 				}
-				p.z = -p.z;
-				// BUG: Doesn't work correctly when nested mesh.
-				r *= Quaternion.AngleAxis(180f, Vector3.up);
+				p = t.localPosition;
+				p -= defaultPos;
+				if (IsRightHanded)
+				{
+					p.z = -p.z;
+					
+					// BUG: Doesn't work correctly when nested mesh.
+					r *= Quaternion.AngleAxis(180f, Vector3.up);
+				}
 			}
 			return new Node
 			{
