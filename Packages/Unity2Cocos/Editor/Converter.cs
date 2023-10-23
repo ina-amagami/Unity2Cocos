@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using cc;
 using UnityEditor;
+using MeshRenderer = UnityEngine.MeshRenderer;
 
 namespace Unity2Cocos
 {
@@ -102,11 +103,22 @@ namespace Unity2Cocos
 				p.z = -p.z;
 				r = new Quaternion(-r.x, -r.y, r.z, r.w);
 			}
-			if (t.TryGetComponent<UnityEngine.MeshRenderer>(out _))
+			if (t.TryGetComponent<UnityEngine.MeshFilter>(out var meshFilter))
 			{
 				// In Cocos, meshes below FBX have a value of 0.
 				// BUG: If the parent is not the root of the FBX model, it will not work correctly.
-				p = Vector3.zero;
+				var renderer = meshFilter.GetComponent<MeshRenderer>();
+				p.z = -p.z;
+				var shift = t.rotation * renderer.bounds.center;
+				p -= new Vector3(-shift.x, shift.y, -shift.z);
+				shift = t.rotation * meshFilter.sharedMesh.bounds.center;
+				p += new Vector3(-shift.x, shift.y, -shift.z);
+				if (t.parent)
+				{
+					shift = t.parent.transform.rotation * t.parent.transform.position;
+					p += new Vector3(-shift.x, shift.y, -shift.z);
+				}
+				p.z = -p.z;
 				// BUG: Doesn't work correctly when nested mesh.
 				r *= Quaternion.AngleAxis(180f, Vector3.up);
 			}
