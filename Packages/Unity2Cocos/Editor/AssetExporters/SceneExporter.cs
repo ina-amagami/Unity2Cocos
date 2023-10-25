@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using System.Linq;
 using System.IO;
 using UnityEditor.SceneManagement;
 using cc;
+using UnityEngine.Rendering;
 
 namespace cc
 {	
@@ -41,7 +43,7 @@ namespace cc
 		public float _skyIllum = 20000;
 		public Vec4 _groundAlbedoHDR = new() { x = 0.2f, y = 0.2f, z = 0.2f, w = 1 };
 		public Vec4 _groundAlbedo = new() { x = 0.2f, y = 0.2f, z = 0.2f, w = 1 };
-		public Vec4 _skyColorLDR = new() { x = 0.452588f, y = 0.607642f, z = 0.755699f, w = 0 };
+		public Vec4 _skyColorLDR = new() { x = 0.452588f, y = 0.607642f, z = 0.755699f, w = 0 }; // fixed value
 		public float _skyIllumLDR = 0.8f;
 		public Vec4 _groundAlbedoLDR = new() { x = 0.618555f, y = 0.577848f, z = 0.544564f, w = 0 };
 	}
@@ -49,12 +51,12 @@ namespace cc
 	public class ShadowsInfo : CCType
 	{
 		public bool _enabled = false;
-		public int _type = 0;
+		public int _type = 1;
 		public Vec3 _normal = new() { x = 0, y = 1, z = 0 };
 		public float _distance = 0;
 		public cc.Color _shadowColor = new() { r = 76, g = 76, b = 76, a = 255 };
 		public int _maxReceived = 4;
-		public Vec2 _size = new() { x = 1024, y = 1024 };
+		public IntVec2 _size = new() { x = 1024, y = 1024 };
 	}
 
 	public class SkyboxInfo : CCType
@@ -172,24 +174,61 @@ namespace Unity2Cocos
 				ccScene._children.Add(new SceneNodeId(ccAsset.Count));
 				Converter.ConvertHierarchy(root.transform, ccAsset);
 			}
+			Converter.ApplySceneNodeIdReplaceable();
 			
 			// Scene Globals
+			var urpAsset = Utils.GetURPAsset();
 			var sceneGlobals = new SceneGlobals();
 			ccScene._globals = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(sceneGlobals);
 
+			var ambientInfo = new AmbientInfo();
+			if (!ExportSetting.Instance.UseCocosAmbientLightInfo)
+			{
+				var ambientIntensity = RenderSettings.ambientIntensity * ExportSetting.Instance.Advanced.AmbientIntensityMultiply;
+				var skyColor = Utils.Color32ToVec4(RenderSettings.ambientSkyColor);
+				skyColor.w = ambientIntensity;
+				ambientInfo._skyColorHDR = ambientInfo._skyColor = skyColor;
+				var groundColor = Utils.Color32ToVec4(ExportSetting.Instance.Advanced.IsAmbientGroundUseEquator ?
+					RenderSettings.ambientEquatorColor : RenderSettings.ambientGroundColor);
+				ambientInfo._groundAlbedoHDR = ambientInfo._groundAlbedo = ambientInfo._groundAlbedoLDR = groundColor;
+				ambientInfo._skyIllumLDR = ambientIntensity;
+				ambientInfo._skyIllumHDR = ambientInfo._skyIllum = 
+					ambientInfo._skyIllumLDR * ExportSetting.Instance.Advanced.IntensityToLightIlluminance;
+			}
 			sceneGlobals.ambient = new SceneNodeId(ccAsset.Count);
-			ccAsset.Add(new AmbientInfo());
+			ccAsset.Add(ambientInfo);
+			
+			var shadowsInfo = new ShadowsInfo
+			{
+				_shadowColor = Utils.Color32ToCocosColor(RenderSettings.subtractiveShadowColor),
+			};
+			if (urpAsset)
+			{
+				shadowsInfo._enabled = urpAsset.supportsMainLightShadows;
+				shadowsInfo._maxReceived = urpAsset.maxAdditionalLightsCount;
+				shadowsInfo._size = new IntVec2
+				{
+					x = Mathf.Min(urpAsset.mainLightShadowmapResolution, 2048),
+					y = Mathf.Min(urpAsset.mainLightShadowmapResolution, 2048)
+				};
+				shadowsInfo._distance = urpAsset.shadowDistance;
+			}
 			sceneGlobals.shadows = new SceneNodeId(ccAsset.Count);
-			ccAsset.Add(new ShadowsInfo());
+			ccAsset.Add(shadowsInfo);
+			
 			sceneGlobals._skybox = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(new SkyboxInfo());
+			
 			sceneGlobals.fog = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(new FogInfo());
+			
 			sceneGlobals.octree = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(new OctreeInfo());
+			
 			sceneGlobals.skin = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(new SkinInfo());
+			
 			sceneGlobals.lightProbeInfo = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(new LightProbeInfo());
 			

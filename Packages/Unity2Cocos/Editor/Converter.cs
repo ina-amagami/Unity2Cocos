@@ -13,9 +13,14 @@ namespace Unity2Cocos
 	{
 		private static readonly Dictionary<Type, ComponentConverter> _componentConverters = new();
 		private static readonly Dictionary<string, MaterialConverter> _materialConverters = new();
+		private static readonly List<SceneNodeIdReplaceable> _sceneNodeIdReplaceableList = new();
+		private static readonly Dictionary<int, int> _unityComponentToNodeId = new();
+		private static readonly Dictionary<int, Vector3> _meshDefaultPositions = new();
 
 		public static void Initialize()
 		{
+			_sceneNodeIdReplaceableList.Clear();
+			_unityComponentToNodeId.Clear();
 			_meshDefaultPositions.Clear();
 			
 			// Component Converter
@@ -56,9 +61,10 @@ namespace Unity2Cocos
 
 		private static void ConvertTransformAndChildren(int parent, Transform t, List<CCType> list)
 		{
-			var id = list.Count;
+			var nodeId = list.Count;
 			var node = TransformToNode(t);
 			node._parent = new SceneNodeId(parent);
+			AddUnityComponentToNodeIdCache(t, list.Count);
 			list.Add(node);
 
 			var transformPath = Utils.GetTransformPath(t);
@@ -79,11 +85,15 @@ namespace Unity2Cocos
 				}
 
 				var results = converter.ConvertExecute(component, list.Count);
-				foreach (var result in results)
+				var ccTypes = results as CCType[] ?? results.ToArray();
+				if (!ccTypes.Any()) continue;
+				
+				AddUnityComponentToNodeIdCache(component, list.Count);
+				foreach (var result in ccTypes)
 				{
 					if (result is cc.Component ccComponent)
 					{
-						ccComponent.node = new SceneNodeId(id);
+						ccComponent.node = new SceneNodeId(nodeId);
 						node._components.Add(new SceneNodeId(list.Count));
 					}
 
@@ -94,12 +104,10 @@ namespace Unity2Cocos
 			for (var i = 0; i < t.childCount; ++i)
 			{
 				node._children.Add(new SceneNodeId(list.Count));
-				ConvertTransformAndChildren(id, t.GetChild(i), list);
+				ConvertTransformAndChildren(nodeId, t.GetChild(i), list);
 			}
 		}
 		
-		private static readonly Dictionary<int, Vector3> _meshDefaultPositions = new();
-
 		private static Node TransformToNode(Transform t)
 		{
 			var p = t.localPosition;
@@ -150,7 +158,35 @@ namespace Unity2Cocos
 				_lscale = new Vec3 { x = t.localScale.x, y = t.localScale.y, z = t.localScale.z },
 				_mobility = t.gameObject.isStatic ? 0 : 2,
 				_euler = Utils.EulerAnglesToVec3(r.eulerAngles),
+				_layer = 1 << Utils.LayerConvert(t.gameObject.layer)
 			};
+		}
+
+		public static void AddSceneNodeIdReplaceable(SceneNodeIdReplaceable replaceable)
+		{
+			_sceneNodeIdReplaceableList.Add(replaceable);
+		}
+
+		private static void AddUnityComponentToNodeIdCache(UnityEngine.Component component, int id)
+		{
+			var hash = component.GetHashCode();
+			if (_unityComponentToNodeId.ContainsKey(hash))
+			{
+				return;
+			}
+			_unityComponentToNodeId.Add(hash, id);
+		}
+		
+		public static void ApplySceneNodeIdReplaceable()
+		{
+			foreach (var replaceable in _sceneNodeIdReplaceableList)
+			{
+				if (_unityComponentToNodeId.TryGetValue(replaceable.TargetUnityComponent.GetHashCode(), out var id))
+				{
+					replaceable.__id__ = id;
+				}
+			}
+			_sceneNodeIdReplaceableList.Clear();
 		}
 
 		public static cc.Material ConvertMaterial(UnityEngine.Material material)

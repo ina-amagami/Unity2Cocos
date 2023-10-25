@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using cc;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Mesh = cc.Mesh;
 
 namespace cc
@@ -53,6 +54,7 @@ namespace Unity2Cocos
 				_mesh = new AssetReference<Mesh>(Exporter.GetUuidOrExportAsset(mesh)),
 				_materials = component.sharedMaterials.Select(mat => 
 					new AssetReference<cc.Material>(Exporter.GetUuidOrExportAsset(mat))).ToArray(),
+				_shadowCastingMode = component.shadowCastingMode != ShadowCastingMode.Off ? 1 : 0,
 				bakeSettings = new SceneNodeId(currentId + 1),
 			};
 			var ccModelBakeSettings = new ModelBakeSettings();

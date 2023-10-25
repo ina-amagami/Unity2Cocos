@@ -17,7 +17,7 @@ Re-export 3D scenes and assets created in Unity as Cocos files.
 ## Under development
 
 - Support more material property convert.
-- Support more 3D feature. (Camera / Light / Reflection Probe / Collider / Rigidbody etc)
+- Support more 3D feature. (LOD Group / Reflection Probe / Collider / Rigidbody etc)
 - TypeScript only generate and set property. (logic is empty)
 
 ## ⚠️ Caution ⚠️

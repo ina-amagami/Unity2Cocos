@@ -27,6 +27,18 @@ namespace cc
 			__id__ = id;
 		}
 	}
+	
+	public class SceneNodeIdReplaceable : SceneNodeId
+	{
+		[NonSerialized]
+		public readonly UnityEngine.Component TargetUnityComponent;
+		
+		public SceneNodeIdReplaceable(UnityEngine.Component component) : base(0)
+		{
+			TargetUnityComponent = component;
+			Unity2Cocos.Converter.AddSceneNodeIdReplaceable(this);
+		}
+	}
 
 	public abstract class CCType
 	{
@@ -41,6 +53,14 @@ namespace cc
 	{
 		public float x;
 		public float y;
+		
+		public static Vec2 Zero => new() { x = 0, y = 0 };
+	}
+	
+	public class IntVec2 : CCType
+	{
+		public int x;
+		public int y;
 		
 		public static Vec2 Zero => new() { x = 0, y = 0 };
 	}
@@ -83,6 +103,14 @@ namespace cc
 		
 		public static Color Zero => new() { r = 0, g = 0, b = 0, a = 0 };
 		public static Color White => new() { r = 255, g = 255, b = 255, a = 255 };
+	}
+	
+	public class Rect : CCType
+	{
+		public float x;
+		public float y;
+		public float width;
+		public float height;
 	}
 
 	public class CCObject : CCType
@@ -135,7 +163,7 @@ namespace cc
 		public Quat _lrot;
 		public Vec3 _lscale;
 		public int _mobility;
-		public uint _layer = 1073741824;
+		public int _layer = 1073741824;
 		public Vec3 _euler = new();
 	}
 

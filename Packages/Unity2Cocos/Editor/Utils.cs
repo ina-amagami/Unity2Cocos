@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using cc;
+using UnityEngine.Rendering.Universal;
 
 namespace Unity2Cocos
 {
@@ -113,6 +114,21 @@ namespace Unity2Cocos
 		{
 			return new() { r = color.r, g = color.g, b = color.b, a = color.a };
 		}
+		
+		public static cc.Vec4 ColorToVec4(UnityEngine.Color color)
+		{
+			return new() { x = color.r, y = color.g, z = color.b, w = color.a };
+		}
+		
+		public static cc.Vec4 Color32ToVec4(Color32 color)
+		{
+			return new() { x = color.r / 255f, y = color.g / 255f, z = color.b / 255f, w = color.a / 255f };
+		}
+		
+		public static cc.Rect RectToCocosRect(UnityEngine.Rect rect)
+		{
+			return new() { x = rect.x, y = rect.y, width = rect.size.x, height = rect.size.y };
+		}
 
 		public static string TextureWrapModeToCocos(TextureWrapMode mode)
 		{
@@ -153,6 +169,41 @@ namespace Unity2Cocos
 		{
 			var shift = ExportSetting.Instance.Advanced.TextureAnisoLevelShift;
 			return Mathf.Max(anisoLevel + shift, 0);
+		}
+		
+		public static int CameraClearFlagsToCocos(CameraClearFlags flags)
+		{
+			switch (flags)
+			{
+				case CameraClearFlags.Color:
+					return 7;
+				case CameraClearFlags.Skybox:
+					return 14;
+				case CameraClearFlags.Depth:
+					return 6;
+				case CameraClearFlags.Nothing:
+				default:
+					return 0;
+			}
+		}
+		
+		public static int CameraISOToCocos(float iso)
+		{
+			if (iso <= 100) return 0;
+			if (iso <= 200) return 1;
+			if (iso <= 400) return 2;
+			return 3;
+		}
+		
+		// TODO: Layer mapping support.
+		public static int LayerConvert(int unityLayer)
+		{
+			return 30;
+		}
+
+		public static UniversalRenderPipelineAsset GetURPAsset()
+		{
+			return ExportSetting.Instance.URPAsset ? ExportSetting.Instance.URPAsset : UniversalRenderPipeline.asset;
 		}
 	}
 }
