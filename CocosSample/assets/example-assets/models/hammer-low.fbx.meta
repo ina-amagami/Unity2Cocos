@@ -2,12 +2,12 @@
   "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
-  "uuid": "97964923-37a6-434f-aead-56a18ef34c1a",
+  "uuid": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d",
   "files": [],
   "subMetas": {
     "64730": {
       "importer": "gltf-mesh",
-      "uuid": "97964923-37a6-434f-aead-56a18ef34c1a@64730",
+      "uuid": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@64730",
       "displayName": "",
       "id": "64730",
       "name": "hammer_low.mesh",
@@ -25,7 +25,7 @@
     },
     "43c71": {
       "importer": "gltf-embeded-image",
-      "uuid": "97964923-37a6-434f-aead-56a18ef34c1a@43c71",
+      "uuid": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@43c71",
       "displayName": "",
       "id": "43c71",
       "name": "file1.image",
@@ -45,7 +45,7 @@
     },
     "d20e9": {
       "importer": "texture",
-      "uuid": "97964923-37a6-434f-aead-56a18ef34c1a@d20e9",
+      "uuid": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@d20e9",
       "displayName": "",
       "id": "d20e9",
       "name": "file1.texture",
@@ -57,7 +57,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "97964923-37a6-434f-aead-56a18ef34c1a@43c71"
+        "imageUuidOrDatabaseUri": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@43c71"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -68,7 +68,7 @@
     },
     "8d883": {
       "importer": "gltf-material",
-      "uuid": "97964923-37a6-434f-aead-56a18ef34c1a@8d883",
+      "uuid": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@8d883",
       "displayName": "",
       "id": "8d883",
       "name": "lambert1.material",
@@ -84,7 +84,7 @@
     },
     "dcf3d": {
       "importer": "gltf-scene",
-      "uuid": "97964923-37a6-434f-aead-56a18ef34c1a@dcf3d",
+      "uuid": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@dcf3d",
       "displayName": "",
       "id": "dcf3d",
       "name": "hammer-low.prefab",
@@ -105,26 +105,26 @@
     },
     "assetFinder": {
       "meshes": [
-        "97964923-37a6-434f-aead-56a18ef34c1a@64730"
+        "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@64730"
       ],
       "skeletons": [],
       "textures": [
-        "97964923-37a6-434f-aead-56a18ef34c1a@d20e9"
+        "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@d20e9"
       ],
       "materials": [
-        "97964923-37a6-434f-aead-56a18ef34c1a@8d883"
+        "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@8d883"
       ],
       "scenes": [
-        "97964923-37a6-434f-aead-56a18ef34c1a@dcf3d"
+        "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@dcf3d"
       ]
     },
     "imageMetas": [
       {
         "name": "file1",
-        "uri": "97964923-37a6-434f-aead-56a18ef34c1a@43c71"
+        "uri": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@43c71"
       }
     ],
-    "redirect": "97964923-37a6-434f-aead-56a18ef34c1a@dcf3d",
+    "redirect": "e2df4782-a0c3-4ffd-a6b0-353fe4c36c1d@dcf3d",
     "lods": {
       "enable": false,
       "hasBuiltinLOD": false,

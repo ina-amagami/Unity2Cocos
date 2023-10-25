@@ -2,12 +2,12 @@
   "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
-  "uuid": "1c741099-8985-40e9-8ddb-bb386ad14efa",
+  "uuid": "576cc642-5d0d-45b1-8991-cd4393754ed7",
   "files": [],
   "subMetas": {
     "c63e2": {
       "importer": "gltf-mesh",
-      "uuid": "1c741099-8985-40e9-8ddb-bb386ad14efa@c63e2",
+      "uuid": "576cc642-5d0d-45b1-8991-cd4393754ed7@c63e2",
       "displayName": "",
       "id": "c63e2",
       "name": "power_jigsaw_low.mesh",
@@ -25,7 +25,7 @@
     },
     "43c71": {
       "importer": "gltf-embeded-image",
-      "uuid": "1c741099-8985-40e9-8ddb-bb386ad14efa@43c71",
+      "uuid": "576cc642-5d0d-45b1-8991-cd4393754ed7@43c71",
       "displayName": "",
       "id": "43c71",
       "name": "file1.image",
@@ -45,7 +45,7 @@
     },
     "d20e9": {
       "importer": "texture",
-      "uuid": "1c741099-8985-40e9-8ddb-bb386ad14efa@d20e9",
+      "uuid": "576cc642-5d0d-45b1-8991-cd4393754ed7@d20e9",
       "displayName": "",
       "id": "d20e9",
       "name": "file1.texture",
@@ -57,7 +57,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "1c741099-8985-40e9-8ddb-bb386ad14efa@43c71"
+        "imageUuidOrDatabaseUri": "576cc642-5d0d-45b1-8991-cd4393754ed7@43c71"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -68,7 +68,7 @@
     },
     "f1ef7": {
       "importer": "gltf-material",
-      "uuid": "1c741099-8985-40e9-8ddb-bb386ad14efa@f1ef7",
+      "uuid": "576cc642-5d0d-45b1-8991-cd4393754ed7@f1ef7",
       "displayName": "",
       "id": "f1ef7",
       "name": "jigsaw.material",
@@ -84,7 +84,7 @@
     },
     "9d43c": {
       "importer": "gltf-scene",
-      "uuid": "1c741099-8985-40e9-8ddb-bb386ad14efa@9d43c",
+      "uuid": "576cc642-5d0d-45b1-8991-cd4393754ed7@9d43c",
       "displayName": "",
       "id": "9d43c",
       "name": "jigsaw-low.prefab",
@@ -105,26 +105,26 @@
     },
     "assetFinder": {
       "meshes": [
-        "1c741099-8985-40e9-8ddb-bb386ad14efa@c63e2"
+        "576cc642-5d0d-45b1-8991-cd4393754ed7@c63e2"
       ],
       "skeletons": [],
       "textures": [
-        "1c741099-8985-40e9-8ddb-bb386ad14efa@d20e9"
+        "576cc642-5d0d-45b1-8991-cd4393754ed7@d20e9"
       ],
       "materials": [
-        "1c741099-8985-40e9-8ddb-bb386ad14efa@f1ef7"
+        "576cc642-5d0d-45b1-8991-cd4393754ed7@f1ef7"
       ],
       "scenes": [
-        "1c741099-8985-40e9-8ddb-bb386ad14efa@9d43c"
+        "576cc642-5d0d-45b1-8991-cd4393754ed7@9d43c"
       ]
     },
     "imageMetas": [
       {
         "name": "file1",
-        "uri": "1c741099-8985-40e9-8ddb-bb386ad14efa@43c71"
+        "uri": "576cc642-5d0d-45b1-8991-cd4393754ed7@43c71"
       }
     ],
-    "redirect": "1c741099-8985-40e9-8ddb-bb386ad14efa@9d43c",
+    "redirect": "576cc642-5d0d-45b1-8991-cd4393754ed7@9d43c",
     "lods": {
       "enable": false,
       "hasBuiltinLOD": false,

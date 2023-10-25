@@ -2,12 +2,12 @@
   "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
-  "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9",
+  "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d",
   "files": [],
   "subMetas": {
     "78918": {
       "importer": "gltf-mesh",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@78918",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@78918",
       "displayName": "",
       "id": "78918",
       "name": "paint_5G_bucket_low.mesh",
@@ -25,7 +25,7 @@
     },
     "74c77": {
       "importer": "gltf-mesh",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@74c77",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@74c77",
       "displayName": "",
       "id": "74c77",
       "name": "paint_1G_bucket_low.mesh",
@@ -43,7 +43,7 @@
     },
     "3c79c": {
       "importer": "gltf-mesh",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@3c79c",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@3c79c",
       "displayName": "",
       "id": "3c79c",
       "name": "paint_1G_lid_low.mesh",
@@ -61,7 +61,7 @@
     },
     "adacb": {
       "importer": "gltf-embeded-image",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@adacb",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@adacb",
       "displayName": "",
       "id": "adacb",
       "name": "file2.image",
@@ -81,7 +81,7 @@
     },
     "43c71": {
       "importer": "gltf-embeded-image",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@43c71",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@43c71",
       "displayName": "",
       "id": "43c71",
       "name": "file1.image",
@@ -101,7 +101,7 @@
     },
     "e873a": {
       "importer": "texture",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@e873a",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@e873a",
       "displayName": "",
       "id": "e873a",
       "name": "file2.texture",
@@ -113,7 +113,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "3cce4565-d078-4770-9283-58b3b62fbdd9@adacb"
+        "imageUuidOrDatabaseUri": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@adacb"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -124,7 +124,7 @@
     },
     "d20e9": {
       "importer": "texture",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@d20e9",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@d20e9",
       "displayName": "",
       "id": "d20e9",
       "name": "file1.texture",
@@ -136,7 +136,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "3cce4565-d078-4770-9283-58b3b62fbdd9@43c71"
+        "imageUuidOrDatabaseUri": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@43c71"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -147,7 +147,7 @@
     },
     "f7ba5": {
       "importer": "gltf-material",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@f7ba5",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@f7ba5",
       "displayName": "",
       "id": "f7ba5",
       "name": "plastic_white.material",
@@ -163,7 +163,7 @@
     },
     "b453d": {
       "importer": "gltf-material",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@b453d",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@b453d",
       "displayName": "",
       "id": "b453d",
       "name": "paint_5g_label.material",
@@ -179,7 +179,7 @@
     },
     "16ef1": {
       "importer": "gltf-material",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@16ef1",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@16ef1",
       "displayName": "",
       "id": "16ef1",
       "name": "metal.material",
@@ -195,7 +195,7 @@
     },
     "fe49e": {
       "importer": "gltf-material",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@fe49e",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@fe49e",
       "displayName": "",
       "id": "fe49e",
       "name": "paint_1g.material",
@@ -211,7 +211,7 @@
     },
     "89ed9": {
       "importer": "gltf-scene",
-      "uuid": "3cce4565-d078-4770-9283-58b3b62fbdd9@89ed9",
+      "uuid": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@89ed9",
       "displayName": "",
       "id": "89ed9",
       "name": "paintbucket-low.prefab",
@@ -232,36 +232,36 @@
     },
     "assetFinder": {
       "meshes": [
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@78918",
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@74c77",
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@3c79c"
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@78918",
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@74c77",
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@3c79c"
       ],
       "skeletons": [],
       "textures": [
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@e873a",
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@d20e9"
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@e873a",
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@d20e9"
       ],
       "materials": [
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@f7ba5",
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@b453d",
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@16ef1",
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@fe49e"
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@f7ba5",
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@b453d",
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@16ef1",
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@fe49e"
       ],
       "scenes": [
-        "3cce4565-d078-4770-9283-58b3b62fbdd9@89ed9"
+        "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@89ed9"
       ]
     },
     "imageMetas": [
       {
         "name": "file2",
-        "uri": "3cce4565-d078-4770-9283-58b3b62fbdd9@adacb"
+        "uri": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@adacb"
       },
       {
         "name": "file1",
-        "uri": "3cce4565-d078-4770-9283-58b3b62fbdd9@43c71"
+        "uri": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@43c71"
       }
     ],
-    "redirect": "3cce4565-d078-4770-9283-58b3b62fbdd9@89ed9",
+    "redirect": "e59bcc95-5ef6-4a8d-996f-2a58f6d9ca1d@89ed9",
     "lods": {
       "enable": false,
       "hasBuiltinLOD": false,
