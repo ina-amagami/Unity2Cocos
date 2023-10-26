@@ -12,13 +12,13 @@ Re-export 3D scenes and assets created in Unity as Cocos files.
 - Image, FBX meshes copy and auto-generate meta files.
 - Support URP material to Cocos material convert. ( If you are using Built-In pipeline, you can convert to URP with the Unity's support. )
 - Map Unity's Built-In assets to Cocos' Built-In assets. (ex. Unity's Cube mesh -> Cocos' Box mesh)
+- Map MonoBehaviour script to Cocos' TypeScript. (Property migration not supported.)
 - Format directory paths to be web-like.
 
 ## Under development
 
 - Support more material property convert.
 - Support more 3D feature. (LOD Group / Reflection Probe / Collider / Rigidbody etc)
-- TypeScript only generate and set property. (logic is empty)
 
 ## ⚠️ Caution ⚠️
 This is an experimental project. Complete conversion is not possible.  
