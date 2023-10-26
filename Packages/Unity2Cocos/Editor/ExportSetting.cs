@@ -18,7 +18,7 @@ namespace Unity2Cocos
 		public List<AssetMapper> AssetMappers = new();
 		
 		[Tooltip("Replace assets referenced in Unity with assets on the Cocos side.")]
-		public List<ScriptMapper> ScriptMapper = new();
+		public List<ScriptMapper> ScriptMappers = new();
 		
 		[Tooltip("Converts directory paths to web-like.")]
 		public bool ExportWebLikePaths = true;

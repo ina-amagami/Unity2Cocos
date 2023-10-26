@@ -75,7 +75,7 @@
   "_props": [
     {
       "mainTexture": {
-        "__uuid__": "2117e879-7bfb-4f16-909c-1dfe08e3077a@6c48a",
+        "__uuid__": "5b94ba4b-4fc1-48dc-8f7c-deab4dfb5034@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
       "tilingOffset": {
@@ -93,7 +93,7 @@
         "__type__": "cc.Color"
       },
       "normalMap": {
-        "__uuid__": "2e77cc22-3cf3-4020-9364-45d42433eeff@3c318",
+        "__uuid__": "30ffa510-9918-4aac-b4a0-6ec074ff003e@3c318",
         "__expectedType__": "cc.Texture2D"
       },
       "normalStrength": 1.0

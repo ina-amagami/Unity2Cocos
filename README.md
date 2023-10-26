@@ -2,11 +2,9 @@
 
 ![](./Documents/unity2cocos.png)
 
-Export 3D scenes and assets created in Unity to CocosCreator.
+Export 3D scene and assets in Unity as Cocos Creator.
 
 ## Feature
-
-Re-export 3D scenes and assets created in Unity as Cocos files.
 
 - From Unity's left-hand scene to Cocos' right-hand scene.
 - Image, FBX meshes copy and auto-generate meta files.
@@ -18,7 +16,7 @@ Re-export 3D scenes and assets created in Unity as Cocos files.
 ## Under development
 
 - Support more material property convert.
-- Support more 3D feature. (LOD Group / Reflection Probe / Collider / Rigidbody etc)
+- Support more 3D feature. (Reflection Probe / Collider / Rigidbody etc)
 
 ## ⚠️ Caution ⚠️
 This is an experimental project. Complete conversion is not possible.  

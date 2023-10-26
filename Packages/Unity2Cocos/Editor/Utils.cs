@@ -95,9 +95,21 @@ namespace Unity2Cocos
 			return string.Concat(names.Select((s, i) => s + (i == names.Count - 1 ? "" : "/")));
 		}
 
+		public static bool IsRightHanded => ExportSetting.Instance.Advanced.ConvertToRightHanded;
+		
+		public static Vector3 RightHanded(this Vector3 v)
+		{
+			return IsRightHanded ? new Vector3(v.x, v.y, -v.z) : v;
+		}
+		
 		public static Vec3 Vector3ToVec3(Vector3 v)
 		{
 			return new Vec3 { x = v.x, y = v.y, z = v.z };
+		}
+		
+		public static Quaternion RightHanded(this Quaternion q)
+		{
+			return IsRightHanded ? new Quaternion(-q.x, -q.y, q.z, q.w) : q;
 		}
 		
 		public static Quat QuaternionToQuat(Quaternion q)

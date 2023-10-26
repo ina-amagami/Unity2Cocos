@@ -39,7 +39,7 @@ namespace Unity2Cocos
 			if (_componentConverters.TryGetValue(typeof(MonoBehaviour), out var monoBehaviourConverter))
 			{
 				_monoBehaviourConverter = monoBehaviourConverter as MonoBehaviourConverter;
-				_monoBehaviourConverter?.Initialize(ExportSetting.Instance.ScriptMapper);
+				_monoBehaviourConverter?.Initialize(ExportSetting.Instance.ScriptMappers);
 			}
 			
 			// Material Converter
@@ -121,14 +121,9 @@ namespace Unity2Cocos
 		{
 			var p = t.localPosition;
 			var r = t.localRotation;
-			if (IsRightHanded)
-			{
-				p.z = -p.z;
-				r = new Quaternion(-r.x, -r.y, r.z, r.w);
-			}
 			if (t.TryGetComponent<UnityEngine.MeshFilter>(out var meshFilter))
 			{
-				// In Cocos, meshes below FBX have a value of 0.
+				// In Cocos, meshes below FBX have a value of 0. (There are rare exceptions.)
 				// Instantiate Mesh, check initial coordinates, and take diff.
 				var hash = meshFilter.sharedMesh.GetHashCode();
 				if (!_meshDefaultPositions.TryGetValue(hash, out var defaultPos))
@@ -152,8 +147,6 @@ namespace Unity2Cocos
 				p -= defaultPos;
 				if (IsRightHanded)
 				{
-					p.z = -p.z;
-					
 					// BUG: Doesn't work correctly when nested mesh.
 					r *= Quaternion.AngleAxis(180f, Vector3.up);
 				}
@@ -162,11 +155,11 @@ namespace Unity2Cocos
 			{
 				_name = t.name,
 				_active = t.gameObject.activeSelf,
-				_lpos = Utils.Vector3ToVec3(p),
-				_lrot = Utils.QuaternionToQuat(r),
+				_lpos = Utils.Vector3ToVec3(p.RightHanded()),
+				_lrot = Utils.QuaternionToQuat(r.RightHanded()),
 				_lscale = new Vec3 { x = t.localScale.x, y = t.localScale.y, z = t.localScale.z },
 				_mobility = t.gameObject.isStatic ? 0 : 2,
-				_euler = Utils.EulerAnglesToVec3(r.eulerAngles),
+				_euler = Utils.EulerAnglesToVec3(r.RightHanded().eulerAngles),
 				_layer = 1 << Utils.LayerConvert(t.gameObject.layer)
 			};
 		}
