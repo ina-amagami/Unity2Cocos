@@ -46,6 +46,9 @@ export class SimpleCameraController extends Component {
             delta.y * this.touchSensitivity * this.deltaTime,
             -delta.x * this.touchSensitivity * this.deltaTime, 0);
         this.node.rotate(quat);
+        const euler = this.node.eulerAngles.clone();
+        euler.z = 0;
+        this.node.setRotationFromEuler(euler);
     }
 
     onKeyDown(event: EventKeyboard) {
