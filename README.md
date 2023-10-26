@@ -2,30 +2,39 @@
 
 ![](./Documents/unity2cocos.png)
 
-Export 3D scene and assets in Unity as Cocos Creator.
+Export 3D scene and assets in Unity to Cocos Creator.
 
 ## Feature
 
 - From Unity's left-hand scene to Cocos' right-hand scene.
+
 - Image, FBX meshes copy and auto-generate meta files.
+
 - Support URP material to Cocos material convert. ( If you are using Built-In pipeline, you can convert to URP with the Unity's support. )
+
 - Map Unity's Built-In assets to Cocos' Built-In assets. (ex. Unity's Cube mesh -> Cocos' Box mesh)
+
 - Map MonoBehaviour script to Cocos' TypeScript. (Property migration not supported.)
+
 - Format directory paths to be web-like.
 
 ## Under development
 
 - Support more material property convert.
+
 - Support more 3D feature. (Reflection Probe / Collider / Rigidbody etc)
 
 ## ⚠️ Caution ⚠️
 This is an experimental project. Complete conversion is not possible.  
 Make a backup of your project if you use it.
 
-The following will not be supported.
+The following will not be supported. We need your help!
+
+- Prefab support. (Very complicated...)
 
 - ParticleSystem / 2D Feature / uGUI convert.
-- Prefab / Audio / Animation export.
+
+- Audio / Animation export.
 
 ## Install
 
@@ -44,7 +53,8 @@ To install via upm, specify `https://github.com/ina-amagami/Cocos2Unity.git?path
 ## Verified
 
 - Unity 2022.3.11f1 / URP 14.0.9
-- Cocos Creator 3.8
+
+- Cocos Creator 3.8.0
 
 ## Package License
 
