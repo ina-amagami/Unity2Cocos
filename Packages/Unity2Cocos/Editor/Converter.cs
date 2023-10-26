@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 using cc;
 using UnityEditor;
-using MeshRenderer = UnityEngine.MeshRenderer;
 
 namespace Unity2Cocos
 {
@@ -16,6 +15,7 @@ namespace Unity2Cocos
 		private static readonly List<SceneNodeIdReplaceable> _sceneNodeIdReplaceableList = new();
 		private static readonly Dictionary<int, int> _unityComponentToNodeId = new();
 		private static readonly Dictionary<int, Vector3> _meshDefaultPositions = new();
+		private static MonoBehaviourConverter _monoBehaviourConverter;
 
 		public static void Initialize()
 		{
@@ -35,6 +35,11 @@ namespace Unity2Cocos
 					continue;
 				}
 				_componentConverters.Add(attribute.Type, (ComponentConverter)Activator.CreateInstance(converter));
+			}
+			if (_componentConverters.TryGetValue(typeof(MonoBehaviour), out var monoBehaviourConverter))
+			{
+				_monoBehaviourConverter = monoBehaviourConverter as MonoBehaviourConverter;
+				_monoBehaviourConverter?.Initialize(ExportSetting.Instance.ScriptMapper);
 			}
 			
 			// Material Converter
@@ -79,9 +84,13 @@ namespace Unity2Cocos
 				var type = component.GetType();
 				if (!_componentConverters.TryGetValue(type, out var converter))
 				{
-					Debug.LogWarning(
-						$"[Converter] Skipped of unsupported component. -> {transformPath}<{type.Name}>");
-					continue;
+					if (!type.IsSubclassOf(typeof(MonoBehaviour)))
+					{
+						Debug.LogWarning(
+							$"[Converter] Skipped of unsupported component. -> {transformPath}<{type.Name}>");
+						continue;
+					}
+					converter = _monoBehaviourConverter;
 				}
 
 				var results = converter.ConvertExecute(component, list.Count);

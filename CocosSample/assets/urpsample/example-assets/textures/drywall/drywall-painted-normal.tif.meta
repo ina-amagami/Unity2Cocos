@@ -1,0 +1,41 @@
+{
+  "ver": "1.0.26",
+  "importer": "image",
+  "imported": true,
+  "uuid": "bb9963c3-48b7-4c2d-9954-0d7b25a10b56",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "3c318": {
+      "displayName": "drywall-painted-normal",
+      "id": "3c318",
+      "name": "normalMap",
+      "ver": "1.0.22",
+      "importer": "texture",
+      "imported": true,
+      "uuid": "bb9963c3-48b7-4c2d-9954-0d7b25a10b56@3c318",
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 1,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "bb9963c3-48b7-4c2d-9954-0d7b25a10b56"
+      }
+    }
+  },
+  "userData": {
+    "fixAlphaTransparencyArtifacts": true,
+    "hasAlpha": false,
+    "type": "normal map",
+    "redirect": "bb9963c3-48b7-4c2d-9954-0d7b25a10b56@3c318"
+  }
+}

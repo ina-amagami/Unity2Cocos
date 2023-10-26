@@ -67,6 +67,10 @@ namespace Unity2Cocos
 			_assetMap.Clear();
 			foreach (var mapper in mappers)
 			{
+				if (!mapper)
+				{
+					continue;
+				}
 				foreach (var mapping in mapper.Mappings)
 				{
 					AddAssetMap(mapping.Asset, mapping.CocosUUID);

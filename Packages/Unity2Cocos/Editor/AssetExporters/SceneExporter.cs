@@ -56,7 +56,7 @@ namespace cc
 		public float _distance = 0;
 		public cc.Color _shadowColor = new() { r = 76, g = 76, b = 76, a = 255 };
 		public int _maxReceived = 4;
-		public IntVec2 _size = new() { x = 1024, y = 1024 };
+		public Vec2 _size = new() { x = 1024, y = 1024 };
 	}
 
 	public class SkyboxInfo : CCType
@@ -207,7 +207,7 @@ namespace Unity2Cocos
 			{
 				shadowsInfo._enabled = urpAsset.supportsMainLightShadows;
 				shadowsInfo._maxReceived = urpAsset.maxAdditionalLightsCount;
-				shadowsInfo._size = new IntVec2
+				shadowsInfo._size = new Vec2
 				{
 					x = Mathf.Min(urpAsset.mainLightShadowmapResolution, 2048),
 					y = Mathf.Min(urpAsset.mainLightShadowmapResolution, 2048)

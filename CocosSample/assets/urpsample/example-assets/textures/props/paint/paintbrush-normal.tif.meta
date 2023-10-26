@@ -1,0 +1,41 @@
+{
+  "ver": "1.0.26",
+  "importer": "image",
+  "imported": true,
+  "uuid": "f75604da-509b-446c-b93f-5efb21503478",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "3c318": {
+      "displayName": "paintbrush-normal",
+      "id": "3c318",
+      "name": "normalMap",
+      "ver": "1.0.22",
+      "importer": "texture",
+      "imported": true,
+      "uuid": "f75604da-509b-446c-b93f-5efb21503478@3c318",
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 1,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "f75604da-509b-446c-b93f-5efb21503478"
+      }
+    }
+  },
+  "userData": {
+    "fixAlphaTransparencyArtifacts": true,
+    "hasAlpha": false,
+    "type": "normal map",
+    "redirect": "f75604da-509b-446c-b93f-5efb21503478@3c318"
+  }
+}

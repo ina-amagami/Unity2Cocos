@@ -17,8 +17,10 @@ MonoBehaviour:
   AssetMappers:
   - {fileID: 11400000, guid: bd2fe912b282d7d4e8c0fb890fac7024, type: 2}
   - {fileID: 11400000, guid: fba91c5ecc4fc1748a7a6902239bf5a1, type: 2}
+  ScriptMapper:
+  - {fileID: 11400000, guid: dac53bd0c4fafc943bc1a47ae53e5d58, type: 2}
   ExportWebLikePaths: 1
-  URPAsset: {fileID: 0}
+  URPAsset: {fileID: 11400000, guid: 19ba41d7c0026c3459d37c2fe90c55a0, type: 2}
   UseCocosAmbientLightInfo: 0
   meshIDMatchMethod: 0
   Advanced:

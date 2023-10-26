@@ -1,0 +1,147 @@
+{
+  "ver": "2.3.8",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "95f5538e-856b-4149-9089-003b7c3b8f47",
+  "files": [],
+  "subMetas": {
+    "3d871": {
+      "importer": "gltf-mesh",
+      "uuid": "95f5538e-856b-4149-9089-003b7c3b8f47@3d871",
+      "displayName": "",
+      "id": "3d871",
+      "name": "safety_hat_low.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1404
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "43c71": {
+      "importer": "gltf-embeded-image",
+      "uuid": "95f5538e-856b-4149-9089-003b7c3b8f47@43c71",
+      "displayName": "",
+      "id": "43c71",
+      "name": "file1.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "d20e9": {
+      "importer": "texture",
+      "uuid": "95f5538e-856b-4149-9089-003b7c3b8f47@d20e9",
+      "displayName": "",
+      "id": "d20e9",
+      "name": "file1.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "95f5538e-856b-4149-9089-003b7c3b8f47@43c71"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "4dd58": {
+      "importer": "gltf-material",
+      "uuid": "95f5538e-856b-4149-9089-003b7c3b8f47@4dd58",
+      "displayName": "",
+      "id": "4dd58",
+      "name": "safetyhat.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a2acc": {
+      "importer": "gltf-scene",
+      "uuid": "95f5538e-856b-4149-9089-003b7c3b8f47@a2acc",
+      "displayName": "",
+      "id": "a2acc",
+      "name": "safetyhat-low.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "fbx": {
+      "smartMaterialEnabled": false
+    },
+    "assetFinder": {
+      "meshes": [
+        "95f5538e-856b-4149-9089-003b7c3b8f47@3d871"
+      ],
+      "skeletons": [],
+      "textures": [
+        "95f5538e-856b-4149-9089-003b7c3b8f47@d20e9"
+      ],
+      "materials": [
+        "95f5538e-856b-4149-9089-003b7c3b8f47@4dd58"
+      ],
+      "scenes": [
+        "95f5538e-856b-4149-9089-003b7c3b8f47@a2acc"
+      ]
+    },
+    "imageMetas": [
+      {
+        "name": "file1",
+        "uri": "95f5538e-856b-4149-9089-003b7c3b8f47@43c71"
+      }
+    ],
+    "redirect": "95f5538e-856b-4149-9089-003b7c3b8f47@a2acc",
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    }
+  }
+}

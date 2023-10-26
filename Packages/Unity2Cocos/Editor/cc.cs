@@ -57,14 +57,6 @@ namespace cc
 		public static Vec2 Zero => new() { x = 0, y = 0 };
 	}
 	
-	public class IntVec2 : CCType
-	{
-		public int x;
-		public int y;
-		
-		public static Vec2 Zero => new() { x = 0, y = 0 };
-	}
-	
 	public class Vec3 : CCType
 	{
 		public float x;

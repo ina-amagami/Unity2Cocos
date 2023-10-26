@@ -1,0 +1,41 @@
+{
+  "ver": "1.0.26",
+  "importer": "image",
+  "imported": true,
+  "uuid": "d31e911f-a0a3-4ad7-8d5a-56a5bd032331",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "3c318": {
+      "displayName": "hammer-normal",
+      "id": "3c318",
+      "name": "normalMap",
+      "ver": "1.0.22",
+      "importer": "texture",
+      "imported": true,
+      "uuid": "d31e911f-a0a3-4ad7-8d5a-56a5bd032331@3c318",
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 1,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "d31e911f-a0a3-4ad7-8d5a-56a5bd032331"
+      }
+    }
+  },
+  "userData": {
+    "fixAlphaTransparencyArtifacts": true,
+    "hasAlpha": false,
+    "type": "normal map",
+    "redirect": "d31e911f-a0a3-4ad7-8d5a-56a5bd032331@3c318"
+  }
+}

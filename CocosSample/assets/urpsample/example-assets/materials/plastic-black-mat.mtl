@@ -1,0 +1,111 @@
+{
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "c8f66d17-351a-48da-a12c-0212d28575c4",
+    "__expectedType__": "cc.EffectAsset"
+  },
+  "_techIdx": 0,
+  "_defines": [
+    {
+      "USE_ALBEDO_MAP": true,
+      "USE_NORMAL_MAP": true
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "_states": [
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    }
+  ],
+  "_props": [
+    {
+      "mainTexture": {
+        "__uuid__": "8f2242ce-1a15-45cd-94ad-e522d2447e38@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "tilingOffset": {
+        "x": 3.0,
+        "y": 3.0,
+        "z": 0.0,
+        "w": 0.0,
+        "__type__": "cc.Vec4"
+      },
+      "mainColor": {
+        "r": 45,
+        "g": 45,
+        "b": 45,
+        "a": 255,
+        "__type__": "cc.Color"
+      },
+      "normalMap": {
+        "__uuid__": "b3861777-e4e6-4628-b702-413224611f08@3c318",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "normalStrength": 1.0
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "_name": "",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "__type__": "cc.Material"
+}

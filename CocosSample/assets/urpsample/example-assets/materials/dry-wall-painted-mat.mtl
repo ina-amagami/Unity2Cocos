@@ -1,0 +1,111 @@
+{
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "c8f66d17-351a-48da-a12c-0212d28575c4",
+    "__expectedType__": "cc.EffectAsset"
+  },
+  "_techIdx": 0,
+  "_defines": [
+    {
+      "USE_ALBEDO_MAP": true,
+      "USE_NORMAL_MAP": true
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "_states": [
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    },
+    {
+      "rasterizerState": {},
+      "depthStencilState": {},
+      "blendState": {
+        "targets": [
+          {}
+        ]
+      }
+    }
+  ],
+  "_props": [
+    {
+      "mainTexture": {
+        "__uuid__": "1d598bb8-2b3b-407f-ad08-f9aeefd1e28c@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "tilingOffset": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0,
+        "w": 0.0,
+        "__type__": "cc.Vec4"
+      },
+      "mainColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255,
+        "__type__": "cc.Color"
+      },
+      "normalMap": {
+        "__uuid__": "bb9963c3-48b7-4c2d-9954-0d7b25a10b56@3c318",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "normalStrength": 1.0
+    },
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "_name": "",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "__type__": "cc.Material"
+}
