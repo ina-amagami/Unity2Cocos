@@ -33,6 +33,7 @@ namespace Unity2Cocos
 			InitializeAssetMapping(setting.AssetMappers);
 			CacheExporter();
 			Converter.Initialize();
+			ReflectionProbeConverter.ProbeId = 0;
 
 			// Export scenes.
 			EditorUtility.DisplayProgressBar(

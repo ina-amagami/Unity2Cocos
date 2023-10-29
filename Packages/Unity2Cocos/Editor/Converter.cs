@@ -151,6 +151,18 @@ namespace Unity2Cocos
 					r *= Quaternion.AngleAxis(180f, Vector3.up);
 				}
 			}
+
+			if (t.TryGetComponent<UnityEngine.ReflectionProbe>(out var reflectionProbe))
+			{
+				// ReflectionProbe's Offset property does not exist, so let Node have it.
+				var offset = reflectionProbe.bounds.center - t.position;
+				if (t.parent)
+				{
+					offset = t.parent.rotation * offset;
+				}
+				p += new Vector3(offset.x, offset.y, -offset.z);
+			}
+
 			return new Node
 			{
 				_name = t.name,
