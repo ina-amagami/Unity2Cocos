@@ -20,9 +20,11 @@ Export 3D scene and assets in Unity to Cocos Creator.
 
 ## Under development
 
-- Support more material property convert.
+- Support more MeshRenderer property convert.
 
-- Support more 3D feature. (Reflection Probe / Collider / Rigidbody etc)
+- Support more Material property convert.
+
+- Support 3D physics feature. (Collider / Rigidbody etc)
 
 ## ⚠️ Caution ⚠️
 This is an experimental project. Complete conversion is not possible.  
