@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using cc;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Mesh = cc.Mesh;
 
 namespace cc
 {
@@ -51,13 +52,30 @@ namespace Unity2Cocos
 			var ccMeshRenderer = new cc.MeshRenderer
 			{
 				_enabled = component.enabled,
-				_mesh = new AssetReference<Mesh>(Exporter.GetUuidOrExportAsset(mesh)),
 				_materials = component.sharedMaterials.Select(mat => 
 					new AssetReference<cc.Material>(Exporter.GetUuidOrExportAsset(mat))).ToArray(),
-				_shadowCastingMode = component.shadowCastingMode != ShadowCastingMode.Off ? 1 : 0,
 				bakeSettings = new SceneNodeId(currentId + 1),
+				_mesh = new AssetReference<cc.Mesh>(Exporter.GetUuidOrExportAsset(mesh)),
+				_shadowCastingMode = component.shadowCastingMode != ShadowCastingMode.Off ? 1 : 0,
+				_shadowReceivingMode = component.receiveShadows ? 1 : 0,
+				_reflectionProbeId = component.reflectionProbeUsage != ReflectionProbeUsage.Off ? 0 : -1,
 			};
-			var ccModelBakeSettings = new ModelBakeSettings();
+			var ccModelBakeSettings = new ModelBakeSettings
+			{
+				_bakeable = ((int)GameObjectUtility.GetStaticEditorFlags(component.gameObject) & (int)StaticEditorFlags.ContributeGI) == 1,
+				_castShadow = component.staticShadowCaster,
+				_receiveShadow = component.receiveShadows,
+				_recieveShadow = component.receiveShadows,
+				_useLightProbe = component.lightProbeUsage != LightProbeUsage.Off,
+				_reflectionProbeType = component.reflectionProbeUsage switch
+				{
+					ReflectionProbeUsage.Off => 0,
+					ReflectionProbeUsage.Simple => 1,
+					ReflectionProbeUsage.BlendProbes => 3,
+					ReflectionProbeUsage.BlendProbesAndSkybox => 4,
+					_ => 0
+				}
+			};
 			return new CCType[] { ccMeshRenderer, ccModelBakeSettings };
 		}
 	}
