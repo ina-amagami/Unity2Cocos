@@ -9,25 +9,51 @@ namespace Unity2Cocos
 	[MaterialConverter("Universal Render Pipeline/Lit")]
 	public class Lit2StandardMaterialConverter : StandardMaterialConverter
 	{
-		private static readonly int BumpMap = Shader.PropertyToID("_BumpMap");
-		private static readonly int BumpScale = Shader.PropertyToID("_BumpScale");
+		private static readonly int Smoothness = Shader.PropertyToID("_Smoothness");
+		private static readonly int MetallicGlossMap = Shader.PropertyToID("_MetallicGlossMap");
+		private static readonly int Metallic = Shader.PropertyToID("_Metallic");
+		private static readonly int OcclusionMap = Shader.PropertyToID("_OcclusionMap");
+		private static readonly int SpecColor = Shader.PropertyToID("_SpecColor");
+		private static readonly int SpecularHighlights = Shader.PropertyToID("_SpecularHighlights");
 
 		public override cc.Material Convert(UnityEngine.Material material)
 		{
 			var ccMat = GetStandardMaterial(material);
+			URPMaterialConverter.BuildLitParams(material, ref ccMat);
+			
 			var define = ccMat._defines[0];
 			var prop = ccMat._props[0];
 
-			var hasNormalMap = material.IsKeywordEnabled("_NORMALMAP") && material.HasTexture(BumpMap);
-			if (hasNormalMap)
+			var specular = material.GetColor(SpecColor).r;
+			var isSpecHighlight = material.GetFloat(SpecularHighlights);
+			var roughness = Mathf.Lerp(1f - material.GetFloat(Smoothness), specular, isSpecHighlight);
+			
+			var metallicMap = material.GetTexture(MetallicGlossMap);
+			if (metallicMap)
 			{
-				var normalMap = material.GetTexture(BumpMap);
-				if (normalMap)
+				define.Add("USE_PBR_MAP", true);
+				prop.Add("pbrMap", new AssetReference<cc.Texture2D>(Exporter.GetUuidOrExportAsset(metallicMap)));
+			}
+			else if (material.IsKeywordEnabled("_SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A"))
+			{
+				// NOTE: Source Albedo Alpha is not believed to be supported by Cocos, so use default values.
+				var albedoMap = material.mainTexture;
+				if (albedoMap)
 				{
-					define.Add("USE_NORMAL_MAP", true);
-					prop.Add("normalMap", new AssetReference<cc.Texture2D>(Exporter.GetUuidOrExportAsset(normalMap)));
-					prop.Add("normalStrength", Mathf.Clamp(material.GetFloat(BumpScale), 0, 5));
+					prop.Add("pbrMap", new AssetReference<cc.Texture2D>(Exporter.GetUuidOrExportAsset(albedoMap)));
 				}
+				roughness = 0.5f;
+				specular = 0.5f;
+			}
+			
+			prop.Add("roughness", roughness);
+			prop.Add("specularIntensity", specular);
+			
+			var occlusionMap = material.GetTexture(OcclusionMap);
+			if (occlusionMap)
+			{
+				define.Add("USE_OCCLUSION_MAP", true);
+				prop.Add("occlusionMap", new AssetReference<cc.Texture2D>(Exporter.GetUuidOrExportAsset(occlusionMap)));
 			}
 			
 			return ccMat;

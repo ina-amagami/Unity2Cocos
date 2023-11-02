@@ -16,14 +16,14 @@ namespace cc
 	
 	public class MaterialState
 	{
-		public object rasterizerState = new();
-		public object depthStencilState = new();
+		public Dictionary<string, object> rasterizerState = new();
+		public Dictionary<string, object> depthStencilState = new();
 		public BlendState blendState = new();
 	}
 		
 	public class BlendState
 	{
-		public object[] targets = new object[1];
+		public Dictionary<string, object>[] targets = new Dictionary<string, object>[1];
 	}
 
 	public class MaterialProp : Dictionary<string, object>

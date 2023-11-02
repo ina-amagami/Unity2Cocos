@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using cc;
 
 namespace Unity2Cocos
@@ -32,11 +33,10 @@ namespace Unity2Cocos
 			{
 				ccMat._defines[i] = new MaterialDefine();
 			}
-
 			for (var i = 0; i < ccMat._states.Length; ++i)
 			{
 				var state = new MaterialState();
-				state.blendState.targets[0] = new object();
+				state.blendState.targets[0] = new Dictionary<string, object>();
 				ccMat._states[i] = state;
 			}
 			for (var i = 0; i < ccMat._props.Length; ++i)

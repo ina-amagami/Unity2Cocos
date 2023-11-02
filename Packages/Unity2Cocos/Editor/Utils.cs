@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using cc;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using cc;
 
 namespace Unity2Cocos
 {
@@ -216,6 +217,34 @@ namespace Unity2Cocos
 		public static UniversalRenderPipelineAsset GetURPAsset()
 		{
 			return ExportSetting.Instance.URPAsset ? ExportSetting.Instance.URPAsset : UniversalRenderPipeline.asset;
+		}
+
+		private static readonly Dictionary<int, int> _blendModeMap = new()
+		{
+			{ (int)BlendMode.Zero, 0 },
+			{ (int)BlendMode.One, 1 },
+			{ (int)BlendMode.DstColor, 7 },
+			{ (int)BlendMode.SrcColor, 6 },
+			{ (int)BlendMode.OneMinusDstColor, 9 },
+			{ (int)BlendMode.SrcAlpha, 2 },
+			{ (int)BlendMode.OneMinusSrcColor, 8 },
+			{ (int)BlendMode.DstAlpha, 3 },
+			{ (int)BlendMode.OneMinusDstAlpha, 5 },
+			{ (int)BlendMode.SrcAlphaSaturate, 10 },
+			{ (int)BlendMode.OneMinusSrcAlpha, 4 }
+		};
+		
+		public static int BlendModeToCocos(int unityBlendMode)
+		{
+			_blendModeMap.TryGetValue(unityBlendMode, out var ccBlendMode);
+			return ccBlendMode;
+		}
+
+		public static float GetHDRColorIntensity(UnityEngine.Color hdrColor)
+		{
+			var maxColorComponent = hdrColor.maxColorComponent;
+			var scaleFactor = 191 / maxColorComponent;
+			return Mathf.Log(255f / scaleFactor) / Mathf.Log(2f); 
 		}
 	}
 }
