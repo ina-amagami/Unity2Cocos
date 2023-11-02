@@ -2,12 +2,12 @@
   "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
-  "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d",
+  "uuid": "21414f28-9107-44ff-b67e-f72f219154e5",
   "files": [],
   "subMetas": {
     "c40d4": {
       "importer": "gltf-mesh",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@c40d4",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@c40d4",
       "displayName": "",
       "id": "c40d4",
       "name": "safety_goggles_low.mesh",
@@ -25,7 +25,7 @@
     },
     "43c71": {
       "importer": "gltf-embeded-image",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@43c71",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@43c71",
       "displayName": "",
       "id": "43c71",
       "name": "file1.image",
@@ -45,7 +45,7 @@
     },
     "d20e9": {
       "importer": "texture",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@d20e9",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@d20e9",
       "displayName": "",
       "id": "d20e9",
       "name": "file1.texture",
@@ -57,7 +57,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "1004947c-cd21-45fc-8ff4-5710cf84de7d@43c71"
+        "imageUuidOrDatabaseUri": "21414f28-9107-44ff-b67e-f72f219154e5@43c71"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -68,7 +68,7 @@
     },
     "68ce2": {
       "importer": "gltf-material",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@68ce2",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@68ce2",
       "displayName": "",
       "id": "68ce2",
       "name": "elastic_strap.material",
@@ -84,7 +84,7 @@
     },
     "b9546": {
       "importer": "gltf-material",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@b9546",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@b9546",
       "displayName": "",
       "id": "b9546",
       "name": "plastic_transparent.material",
@@ -100,7 +100,7 @@
     },
     "8182b": {
       "importer": "gltf-material",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@8182b",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@8182b",
       "displayName": "",
       "id": "8182b",
       "name": "plastic_black.material",
@@ -116,7 +116,7 @@
     },
     "63d4a": {
       "importer": "gltf-material",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@63d4a",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@63d4a",
       "displayName": "",
       "id": "63d4a",
       "name": "plastic_yellow.material",
@@ -132,7 +132,7 @@
     },
     "924a3": {
       "importer": "gltf-scene",
-      "uuid": "1004947c-cd21-45fc-8ff4-5710cf84de7d@924a3",
+      "uuid": "21414f28-9107-44ff-b67e-f72f219154e5@924a3",
       "displayName": "",
       "id": "924a3",
       "name": "safetygoggles-low.prefab",
@@ -153,29 +153,29 @@
     },
     "assetFinder": {
       "meshes": [
-        "1004947c-cd21-45fc-8ff4-5710cf84de7d@c40d4"
+        "21414f28-9107-44ff-b67e-f72f219154e5@c40d4"
       ],
       "skeletons": [],
       "textures": [
-        "1004947c-cd21-45fc-8ff4-5710cf84de7d@d20e9"
+        "21414f28-9107-44ff-b67e-f72f219154e5@d20e9"
       ],
       "materials": [
-        "1004947c-cd21-45fc-8ff4-5710cf84de7d@68ce2",
-        "1004947c-cd21-45fc-8ff4-5710cf84de7d@b9546",
-        "1004947c-cd21-45fc-8ff4-5710cf84de7d@8182b",
-        "1004947c-cd21-45fc-8ff4-5710cf84de7d@63d4a"
+        "21414f28-9107-44ff-b67e-f72f219154e5@68ce2",
+        "21414f28-9107-44ff-b67e-f72f219154e5@b9546",
+        "21414f28-9107-44ff-b67e-f72f219154e5@8182b",
+        "21414f28-9107-44ff-b67e-f72f219154e5@63d4a"
       ],
       "scenes": [
-        "1004947c-cd21-45fc-8ff4-5710cf84de7d@924a3"
+        "21414f28-9107-44ff-b67e-f72f219154e5@924a3"
       ]
     },
     "imageMetas": [
       {
         "name": "file1",
-        "uri": "1004947c-cd21-45fc-8ff4-5710cf84de7d@43c71"
+        "uri": "21414f28-9107-44ff-b67e-f72f219154e5@43c71"
       }
     ],
-    "redirect": "1004947c-cd21-45fc-8ff4-5710cf84de7d@924a3",
+    "redirect": "21414f28-9107-44ff-b67e-f72f219154e5@924a3",
     "lods": {
       "enable": false,
       "hasBuiltinLOD": false,

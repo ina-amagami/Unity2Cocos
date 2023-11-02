@@ -1,0 +1,42 @@
+{
+  "ver": "1.0.26",
+  "importer": "image",
+  "imported": true,
+  "uuid": "8d12a81f-a02e-4fb4-8c72-f9390051a8a4",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "displayName": "paintbrush-metallic-occulusion-smoothness",
+      "id": "6c48a",
+      "name": "texture",
+      "ver": "1.0.22",
+      "importer": "texture",
+      "imported": true,
+      "uuid": "8d12a81f-a02e-4fb4-8c72-f9390051a8a4@6c48a",
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "visible": false,
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "nearest",
+        "anisotropy": 1,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "8d12a81f-a02e-4fb4-8c72-f9390051a8a4"
+      }
+    }
+  },
+  "userData": {
+    "fixAlphaTransparencyArtifacts": true,
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "8d12a81f-a02e-4fb4-8c72-f9390051a8a4@6c48a"
+  }
+}

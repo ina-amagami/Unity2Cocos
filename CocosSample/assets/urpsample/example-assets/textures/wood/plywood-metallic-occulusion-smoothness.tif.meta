@@ -1,0 +1,42 @@
+{
+  "ver": "1.0.26",
+  "importer": "image",
+  "imported": true,
+  "uuid": "84e70e7d-70fc-49ae-868e-a2c0e489c6e7",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "displayName": "plywood-metallic-occulusion-smoothness",
+      "id": "6c48a",
+      "name": "texture",
+      "ver": "1.0.22",
+      "importer": "texture",
+      "imported": true,
+      "uuid": "84e70e7d-70fc-49ae-868e-a2c0e489c6e7@6c48a",
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "visible": false,
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "nearest",
+        "anisotropy": 1,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "84e70e7d-70fc-49ae-868e-a2c0e489c6e7"
+      }
+    }
+  },
+  "userData": {
+    "fixAlphaTransparencyArtifacts": true,
+    "hasAlpha": true,
+    "type": "texture",
+    "redirect": "84e70e7d-70fc-49ae-868e-a2c0e489c6e7@6c48a"
+  }
+}

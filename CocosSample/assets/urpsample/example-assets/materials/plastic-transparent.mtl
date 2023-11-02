@@ -4,7 +4,7 @@
     "__uuid__": "c8f66d17-351a-48da-a12c-0212d28575c4",
     "__expectedType__": "cc.EffectAsset"
   },
-  "_techIdx": 0,
+  "_techIdx": 1,
   "_defines": [
     {},
     {},
@@ -19,7 +19,12 @@
       "depthStencilState": {},
       "blendState": {
         "targets": [
-          {}
+          {
+            "blendSrc": 1,
+            "blendDst": 4,
+            "blendSrcAlpha": 1,
+            "blendDstAlpha": 4
+          }
         ]
       }
     },
@@ -84,7 +89,9 @@
         "b": 106,
         "a": 153,
         "__type__": "cc.Color"
-      }
+      },
+      "roughness": 0.199999928,
+      "specularIntensity": 0.199999928
     },
     {},
     {},

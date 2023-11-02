@@ -84,7 +84,22 @@
         "b": 255,
         "a": 255,
         "__type__": "cc.Color"
-      }
+      },
+      "emissive": {
+        "r": 191,
+        "g": 191,
+        "b": 191,
+        "a": 255,
+        "__type__": "cc.Color"
+      },
+      "emissiveScale": {
+        "x": 3.89969087,
+        "y": 3.89969087,
+        "z": 3.89969087,
+        "__type__": "cc.Vec3"
+      },
+      "roughness": 0.199999928,
+      "specularIntensity": 0.199999928
     },
     {},
     {},

@@ -8,7 +8,9 @@
   "_defines": [
     {
       "USE_ALBEDO_MAP": true,
-      "USE_NORMAL_MAP": true
+      "USE_NORMAL_MAP": true,
+      "USE_PBR_MAP": true,
+      "USE_OCCLUSION_MAP": true
     },
     {},
     {},
@@ -75,7 +77,7 @@
   "_props": [
     {
       "mainTexture": {
-        "__uuid__": "7f67906b-06dc-4323-b2f0-472245d40179@6c48a",
+        "__uuid__": "4ecbd33c-2ab9-492d-b6f7-34880b966123@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
       "tilingOffset": {
@@ -93,10 +95,20 @@
         "__type__": "cc.Color"
       },
       "normalMap": {
-        "__uuid__": "3f48beb5-600f-4381-8d25-acb31964b476@3c318",
+        "__uuid__": "64928f33-a2a2-4f93-8374-68505d319a47@3c318",
         "__expectedType__": "cc.Texture2D"
       },
-      "normalStrength": 1.0
+      "normalStrength": 1.0,
+      "pbrMap": {
+        "__uuid__": "faea7fc3-e37e-43ee-95be-901aa9716f46@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      },
+      "roughness": 0.199999928,
+      "specularIntensity": 0.199999928,
+      "occlusionMap": {
+        "__uuid__": "faea7fc3-e37e-43ee-95be-901aa9716f46@6c48a",
+        "__expectedType__": "cc.Texture2D"
+      }
     },
     {},
     {},
