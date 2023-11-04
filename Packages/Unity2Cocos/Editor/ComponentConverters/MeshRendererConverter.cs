@@ -46,8 +46,14 @@ namespace Unity2Cocos
 	[ComponentConverter(typeof(UnityEngine.MeshRenderer))]
 	public class MeshRendererConverter : ComponentConverter<UnityEngine.MeshRenderer>
 	{
+		private static readonly int ReceiveShadows = Shader.PropertyToID("_ReceiveShadows");
+
 		protected override IEnumerable<CCType> Convert(UnityEngine.MeshRenderer component, int currentId)
 		{
+			// URP ReceiveShadow option has Material.
+			// NOTE: Cocos does not support ReceiveShadow switching for each sub mesh, so determine by Any.
+			var isReceiveShadow = !component.sharedMaterials.Any(m => m.IsKeywordEnabled("_RECEIVE_SHADOWS_OFF"));
+			
 			var mesh = component.GetComponent<MeshFilter>().sharedMesh;
 			var ccMeshRenderer = new cc.MeshRenderer
 			{
@@ -57,15 +63,15 @@ namespace Unity2Cocos
 				bakeSettings = new SceneNodeId(currentId + 1),
 				_mesh = new AssetReference<cc.Mesh>(Exporter.GetUuidOrExportAsset(mesh)),
 				_shadowCastingMode = component.shadowCastingMode != ShadowCastingMode.Off ? 1 : 0,
-				_shadowReceivingMode = component.receiveShadows ? 1 : 0,
+				_shadowReceivingMode = isReceiveShadow ? 1 : 0,
 				_reflectionProbeId = component.reflectionProbeUsage != ReflectionProbeUsage.Off ? 0 : -1,
 			};
 			var ccModelBakeSettings = new ModelBakeSettings
 			{
 				_bakeable = ((int)GameObjectUtility.GetStaticEditorFlags(component.gameObject) & (int)StaticEditorFlags.ContributeGI) == 1,
 				_castShadow = component.staticShadowCaster,
-				_receiveShadow = component.receiveShadows,
-				_recieveShadow = component.receiveShadows,
+				_receiveShadow = isReceiveShadow,
+				_recieveShadow = isReceiveShadow,
 				_useLightProbe = component.lightProbeUsage != LightProbeUsage.Off,
 				_reflectionProbeType = component.reflectionProbeUsage switch
 				{
