@@ -16,6 +16,7 @@ namespace cc
 	
 	public class MaterialState
 	{
+		public int priority = 128;
 		public Dictionary<string, object> rasterizerState = new();
 		public Dictionary<string, object> depthStencilState = new();
 		public BlendState blendState = new();

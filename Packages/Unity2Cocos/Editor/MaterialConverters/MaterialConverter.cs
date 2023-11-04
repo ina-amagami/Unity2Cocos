@@ -19,7 +19,7 @@ namespace Unity2Cocos
 	{
 		public abstract Material Convert(UnityEngine.Material material);
 
-		public static Material CreateMaterial(string effectUuid, int passCount)
+		public static Material CreateMaterial(UnityEngine.Material src, string effectUuid, int passCount)
 		{
 			var ccMat = new Material
 			{
@@ -43,6 +43,14 @@ namespace Unity2Cocos
 			{
 				ccMat._props[i] = new MaterialProp();
 			}
+			
+			// Instancing
+			var define = ccMat._defines[0];
+			if (src.enableInstancing)
+			{
+				define.Add("USE_INSTANCING", true);
+			}
+			
 			return ccMat;
 		}
 	}

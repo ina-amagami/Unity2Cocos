@@ -6,6 +6,9 @@ namespace Unity2Cocos
 	/// <summary>
 	/// URP Lit to Cocos Standard Material.
 	/// </summary>
+	/// <remarks>
+	/// Keep the appearance as close as possible. Not a perfect.
+	/// </remarks>
 	[MaterialConverter("Universal Render Pipeline/Lit")]
 	public class Lit2StandardMaterialConverter : StandardMaterialConverter
 	{
@@ -24,9 +27,12 @@ namespace Unity2Cocos
 			var define = ccMat._defines[0];
 			var prop = ccMat._props[0];
 
-			var specular = material.GetColor(SpecColor).r;
-			var isSpecHighlight = material.GetFloat(SpecularHighlights);
-			var roughness = Mathf.Lerp(1f - material.GetFloat(Smoothness), specular, isSpecHighlight);
+			var specColor = material.GetColor(SpecColor);
+			var specular = (specColor.r + specColor.g + specColor.b) / 3f;
+			var isSpecHighlight = material.GetInt(SpecularHighlights);
+			var roughness = Mathf.Max(
+				1f - material.GetFloat(Smoothness),
+				isSpecHighlight > 0 ? specular : 0);
 			
 			var metallicMap = material.GetTexture(MetallicGlossMap);
 			if (metallicMap)
@@ -36,7 +42,7 @@ namespace Unity2Cocos
 			}
 			else if (material.IsKeywordEnabled("_SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A"))
 			{
-				// NOTE: Source Albedo Alpha is not believed to be supported by Cocos, so use default values.
+				// NOTE: Source Albedo Alpha is not supported by Cocos, so use default values.
 				var albedoMap = material.mainTexture;
 				if (albedoMap)
 				{

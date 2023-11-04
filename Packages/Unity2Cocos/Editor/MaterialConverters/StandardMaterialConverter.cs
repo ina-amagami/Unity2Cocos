@@ -9,7 +9,7 @@ namespace Unity2Cocos
 		
 		public static cc.Material GetStandardMaterial(UnityEngine.Material material)
 		{
-			var ccMat = CreateMaterial(CocosStandardShaderUuid, 6);
+			var ccMat = CreateMaterial(material, CocosStandardShaderUuid, 6);
 			URPMaterialConverter.BuildCocosMaterial(material, ref ccMat, "USE_ALBEDO_MAP");
 			return ccMat;
 		}

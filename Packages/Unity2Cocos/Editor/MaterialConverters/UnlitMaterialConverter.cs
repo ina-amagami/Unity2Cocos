@@ -10,7 +10,7 @@ namespace Unity2Cocos
 
 		public override cc.Material Convert(UnityEngine.Material material)
 		{
-			var ccMat = CreateMaterial(CocosUnlitShaderUuid, 3);
+			var ccMat = CreateMaterial(material, CocosUnlitShaderUuid, 3);
 			URPMaterialConverter.BuildCocosMaterial(material, ref ccMat, "USE_TEXTURE");
 			return ccMat;
 		}

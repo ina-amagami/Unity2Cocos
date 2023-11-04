@@ -16,6 +16,7 @@ namespace Unity2Cocos
 		private static readonly int DstBlend = Shader.PropertyToID("_DstBlend");
 		private static readonly int SrcBlendAlpha = Shader.PropertyToID("_SrcBlendAlpha");
 		private static readonly int DstBlendAlpha = Shader.PropertyToID("_DstBlendAlpha");
+		private static readonly int QueueOffset = Shader.PropertyToID("_QueueOffset");
 		
 		public static void BuildCocosMaterial(
 			UnityEngine.Material urpMat,
@@ -60,15 +61,13 @@ namespace Unity2Cocos
 			}
 			
 			// Cull Mode
-			var hasCull = urpMat.HasFloat(Cull);
-			if (hasCull && urpMat.GetInt(Cull) != 2)
+			if (urpMat.HasFloat(Cull) && urpMat.GetInt(Cull) != 2)
 			{
 				state.rasterizerState.Add("cullMode", urpMat.GetInt(Cull));
 			}
 			
 			// Blend Mode
-			var hasSurface = urpMat.HasFloat(Surface);
-			if (hasSurface)
+			if (urpMat.HasFloat(Surface))
 			{
 				// 0: Opaque, 1: Transparent
 				ccMat._techIdx = urpMat.GetInt(Surface);
@@ -81,6 +80,12 @@ namespace Unity2Cocos
 					target.Add("blendSrcAlpha", Utils.BlendModeToCocos(urpMat.GetInt(SrcBlendAlpha)));
 					target.Add("blendDstAlpha", Utils.BlendModeToCocos(urpMat.GetInt(DstBlendAlpha)));
 				}
+			}
+			
+			// Render Queue
+			if (urpMat.HasInt(QueueOffset) && urpMat.GetInt(QueueOffset) != 0)
+			{
+				state.priority += urpMat.GetInt(QueueOffset);
 			}
 		}
 
