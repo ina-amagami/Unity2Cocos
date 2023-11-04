@@ -51,15 +51,9 @@ namespace Unity2Cocos
 
 			[Tooltip("Unity light intensity to Cocos illuminance.")]
 			public float IntensityToLightIlluminance = 38400;
-
-			[Tooltip("Ambient light intensity adjusted.")]
-			public float AmbientIntensityMultiply = 0.5f;
 			
 			[Tooltip("Ground is too dark, to use Equator.")]
 			public bool IsAmbientGroundUseEquator = true;
-
-			[Tooltip("Cocos defaults to 0.01, but that's too small.")]
-			public float SpotLightSize = 1;
 		}
 
 		public AdvancedSettings Advanced;

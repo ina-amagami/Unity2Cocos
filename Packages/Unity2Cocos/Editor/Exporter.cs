@@ -11,16 +11,17 @@ namespace Unity2Cocos
 	public static class Exporter
 	{
 		public const string ProgressBarTitle = "Unity2Cocos";
+		public static string OutputFolderPath { get; private set; }
 		
 		private static readonly Dictionary<Type, AssetExporter> _exporterCache = new();
 		private static readonly Dictionary<int, string> _assetMap = new();
-		private static string _outputFolderPath;
+		
 
 		public static void Export()
 		{
-			_outputFolderPath = EditorUtility.OpenFolderPanel("Select Export Folder", "", "");
+			OutputFolderPath = EditorUtility.OpenFolderPanel("Select Export Folder", "", "");
 			
-			if (string.IsNullOrEmpty(_outputFolderPath))
+			if (string.IsNullOrEmpty(OutputFolderPath))
 			{
 				return;
 			}
@@ -33,11 +34,12 @@ namespace Unity2Cocos
 			InitializeAssetMapping(setting.AssetMappers);
 			CacheExporter();
 			Converter.Initialize();
+			URPMaterialConverter.Initialize();
 			ReflectionProbeConverter.ProbeId = 0;
 
 			// Export scenes.
 			EditorUtility.DisplayProgressBar(
-				ProgressBarTitle, $"Exporting scenes to: {_outputFolderPath}...", 0);
+				ProgressBarTitle, $"Exporting scenes to: {OutputFolderPath}...", 0);
 			
 			foreach (var scene in setting.Scenes)
 			{
@@ -107,7 +109,7 @@ namespace Unity2Cocos
 				return string.Empty;
 			}
 
-			uuid = exporter.ExportExecute(asset, _outputFolderPath);
+			uuid = exporter.ExportExecute(asset, OutputFolderPath);
 			AddAssetMap(asset, uuid);
 			
 			return uuid;

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 
@@ -138,6 +140,50 @@ namespace Unity2Cocos
 			ExportAssetCopy();
 			ExportMeta(ccMeta);
 			
+			return fullUuid;
+		}
+
+		public static string ExportPBRMap(Texture2D tex, string srcPath)
+		{
+			var ccMeta = new Meta();
+
+			var info = new ExportInfo(srcPath, Exporter.OutputFolderPath, ".png");
+			var subAssetUuid = "6c48a";
+			var fullUuid = $"{ccMeta.uuid}@{subAssetUuid}";
+			var subMetas = new Dictionary<string, SubMeta>();
+			var subMeta = new SubMeta()
+			{
+				uuid = fullUuid,
+				displayName = System.IO.Path.GetFileNameWithoutExtension(info.CocosAssetName),
+				id = subAssetUuid,
+				name = "texture"
+			};
+			var subUserData = new SubMeta.UserData();
+			subUserData.wrapModeS = Utils.TextureWrapModeToCocos(tex.wrapModeU);
+			subUserData.wrapModeT = Utils.TextureWrapModeToCocos(tex.wrapModeV);
+			subUserData.minfilter = subUserData.magfilter = Utils.TextureFilterModeToCocos(tex.filterMode);
+			subUserData.mipfilter = tex.mipmapCount > 0 ? Utils.TextureFilterModeToCocosMipFilter(tex.filterMode) : "none";
+			subUserData.anisotropy = Utils.TextureAnisoToCocos(tex.anisoLevel);
+			subUserData.imageUuidOrDatabaseUri = ccMeta.uuid;
+			subMeta.userData = subUserData;
+			subMetas.Add(subAssetUuid, subMeta);
+			ccMeta.subMetas = subMetas;
+			
+			ccMeta.userData = new Meta.UserData()
+			{
+				hasAlpha = true,
+				type = "texture",
+				redirect = fullUuid
+			};
+
+			Directory.CreateDirectory(Path.Combine(info.OutputFolderPath, info.CocosAssetDirectory));
+			
+			var name = "generated__pbr_from_" + info.CocosAssetName;
+			var path = Path.Combine(info.OutputFolderPath, Path.Combine(info.CocosAssetDirectory, name)) + ".png";
+			File.WriteAllBytes(path, tex.EncodeToPNG());
+			
+			var jsonString = JsonConvert.SerializeObject(ccMeta, Formatting.Indented);
+			File.WriteAllText(path + ".meta", jsonString);
 			return fullUuid;
 		}
 	}

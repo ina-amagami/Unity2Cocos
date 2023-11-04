@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using cc;
+using UnityEditor;
 using UnityEngine;
 
 namespace Unity2Cocos
@@ -137,6 +139,57 @@ namespace Unity2Cocos
 				prop.Add("emissive", Utils.Color32ToCocosColor(ldrColor));
 				prop.Add("emissiveScale", new cc.Vec3() { x = intensity, y = intensity, z = intensity });
 			}
+		}
+
+		private static readonly Dictionary<int, string> _pbrTextureMap = new();
+
+		public static void Initialize()
+		{
+			_pbrTextureMap.Clear();
+		}
+		
+		public static string ExportPBRMap(UnityEngine.Texture2D src, bool isMetallicMap)
+		{
+			var srcPath = AssetDatabase.GetAssetPath(src);
+			var key = src.GetHashCode();
+			if (_pbrTextureMap.TryGetValue(key, out var cocosUuid))
+			{
+				return cocosUuid;
+			}
+			var isReadable = src.isReadable;
+			if (!isReadable)
+			{
+				src = Utils.CreateReadableTexture2D(src);
+			}
+			var colors = src.GetPixels(0, 0, src.width, src.height);
+			for (var i = 0; i < colors.Length; ++i)
+			{
+				// Cocos PBR Map
+				//
+				// OCCLUSION_CHANNEL          r
+				// ROUGHNESS_CHANNEL          g
+				// METALLIC_CHANNEL           b
+				// SPECULAR_INTENSITY_CHANNEL a
+				var c = colors[i];
+				colors[i].r = 1f;
+				colors[i].g = 1f - c.a;
+				colors[i].b = isMetallicMap ? c.r : 1f;
+				colors[i].a = 1f;
+			}
+
+			var dst = new UnityEngine.Texture2D(src.width, src.height);
+			dst.SetPixels(colors);
+			dst.Apply();
+
+			cocosUuid = Texture2DExporter.ExportPBRMap(dst, srcPath);
+			_pbrTextureMap.Add(key, cocosUuid);
+			
+			if (!isReadable)
+			{
+				Object.DestroyImmediate(src);
+			}
+			Object.DestroyImmediate(dst);
+			return cocosUuid;
 		}
 	}
 }

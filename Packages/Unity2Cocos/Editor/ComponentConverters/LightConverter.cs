@@ -111,9 +111,8 @@ namespace cc
 		public float _spotAngle;
 
 		public SpotLight(Light unityLight, int currentId) : base(unityLight, currentId)
-		{
-			_size = ExportSetting.Instance.Advanced.SpotLightSize;
-			_spotAngle = unityLight.spotAngle;
+		{ 
+			_size = _spotAngle = unityLight.spotAngle;
 		}
 	}
 	

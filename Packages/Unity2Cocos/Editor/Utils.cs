@@ -246,5 +246,24 @@ namespace Unity2Cocos
 			var scaleFactor = 191 / maxColorComponent;
 			return Mathf.Log(255f / scaleFactor) / Mathf.Log(2f); 
 		}
+		
+		public static UnityEngine.Texture2D CreateReadableTexture2D(UnityEngine.Texture2D src)
+		{
+			var renderTexture = RenderTexture.GetTemporary(
+				src.width,
+				src.height,
+				0,
+				RenderTextureFormat.Default,
+				RenderTextureReadWrite.Linear);
+			Graphics.Blit(src, renderTexture);
+			RenderTexture previous = RenderTexture.active;
+			RenderTexture.active = renderTexture;
+			var readableTexture2D = new UnityEngine.Texture2D(src.width, src.height);
+			readableTexture2D.ReadPixels(new UnityEngine.Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+			readableTexture2D.Apply();
+			RenderTexture.active = previous;
+			RenderTexture.ReleaseTemporary(renderTexture);
+			return readableTexture2D;
+		}
 	}
 }

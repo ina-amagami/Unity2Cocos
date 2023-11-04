@@ -28,6 +28,4 @@ MonoBehaviour:
     TextureAnisoLevelShift: -1
     BloomThresholdOffset: -0.1
     IntensityToLightIlluminance: 38400
-    AmbientIntensityMultiply: 0.625
     IsAmbientGroundUseEquator: 1
-    SpotLightSize: 1

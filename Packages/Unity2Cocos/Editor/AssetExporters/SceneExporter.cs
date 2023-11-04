@@ -7,6 +7,8 @@ using System.IO;
 using UnityEditor.SceneManagement;
 using cc;
 using UnityEngine.Rendering;
+using Component = cc.Component;
+using Object = UnityEngine.Object;
 
 namespace cc
 {	
@@ -185,7 +187,7 @@ namespace Unity2Cocos
 			var ambientInfo = new AmbientInfo();
 			if (!ExportSetting.Instance.UseCocosAmbientLightInfo)
 			{
-				var ambientIntensity = RenderSettings.ambientIntensity * ExportSetting.Instance.Advanced.AmbientIntensityMultiply;
+				var ambientIntensity = RenderSettings.ambientIntensity;
 				var skyColor = Utils.Color32ToVec4(RenderSettings.ambientSkyColor);
 				skyColor.w = ambientIntensity;
 				ambientInfo._skyColorHDR = ambientInfo._skyColor = skyColor;
@@ -217,8 +219,15 @@ namespace Unity2Cocos
 			sceneGlobals.shadows = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(shadowsInfo);
 			
+			var skyBoxInfo = new SkyboxInfo();
+			var sunSource = RenderSettings.sun ? RenderSettings.sun : 
+				Object.FindObjectsOfType<Light>().FirstOrDefault(x => x.type == LightType.Directional);
+			if (sunSource)
+			{
+				skyBoxInfo._rotationAngle = sunSource.transform.rotation.RightHanded().eulerAngles.y;
+			}
 			sceneGlobals._skybox = new SceneNodeId(ccAsset.Count);
-			ccAsset.Add(new SkyboxInfo());
+			ccAsset.Add(skyBoxInfo);
 			
 			sceneGlobals.fog = new SceneNodeId(ccAsset.Count);
 			ccAsset.Add(new FogInfo());

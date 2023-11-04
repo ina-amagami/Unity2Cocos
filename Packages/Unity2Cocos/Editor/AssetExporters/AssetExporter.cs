@@ -21,21 +21,26 @@ namespace Unity2Cocos
 	{
 		public class ExportInfo
 		{
-			public string OutputFolderPath;
-			public string UnityAssetPath;
-			public string UnityAssetDirectory;
-			public string UnityAssetName;
-			public string CocosAssetDirectory;
-			public string CocosAssetName;
-			public string CocosAssetPath;
-			public string CocosAssetOutputPath;
-			public string CocosMetaOutputPath;
+			public readonly string OutputFolderPath;
+			public readonly string UnityAssetPath;
+			public readonly string UnityAssetDirectory;
+			public readonly string UnityAssetName;
+			public readonly string CocosAssetDirectory;
+			public readonly string CocosAssetName;
+			public readonly string CocosAssetPath;
+			public readonly string CocosAssetOutputPath;
+			public readonly string CocosMetaOutputPath;
+
+			public ExportInfo(UnityEngine.Object asset, string outputFolderPath, string extension) :
+				this(AssetDatabase.GetAssetPath(asset), outputFolderPath, extension)
+			{
+			}
 			
-			public ExportInfo(UnityEngine.Object asset, string outputFolderPath, string extension)
+			public ExportInfo(string assetPath, string outputFolderPath, string extension)
 			{
 				OutputFolderPath = outputFolderPath;
-				
-				UnityAssetPath = AssetDatabase.GetAssetPath(asset);
+
+				UnityAssetPath = assetPath;
 				UnityAssetDirectory = Path.GetDirectoryName(UnityAssetPath);
 
 				if (!string.IsNullOrEmpty(extension))
