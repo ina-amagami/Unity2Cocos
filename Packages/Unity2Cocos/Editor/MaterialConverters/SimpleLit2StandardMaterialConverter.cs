@@ -12,6 +12,9 @@ namespace Unity2Cocos
 	[MaterialConverter("Universal Render Pipeline/Simple Lit")]
 	public class SimpleLit2StandardMaterialConverter : StandardMaterialConverter
 	{
+		// NOTE: Specular minimum required to enable highlighting. Smaller highlights than Lit shader.
+		private const float MinRoughness = 0.1f;
+		
 		private static readonly int Smoothness = Shader.PropertyToID("_Smoothness");
 		private static readonly int SpecGlossMap = Shader.PropertyToID("_SpecGlossMap");
 		private static readonly int SpecColor = Shader.PropertyToID("_SpecColor");
@@ -23,51 +26,55 @@ namespace Unity2Cocos
 			
 			var define = ccMat._defines[0];
 			var prop = ccMat._props[0];
-			
+
+			// NOTE: Cocos Standard shader does not support specular color, so it grayscale.
 			var specColor = material.GetColor(SpecColor);
 			var specular = (specColor.r + specColor.g + specColor.b) / 3f;
-			var roughness = Mathf.Max(1f - material.GetFloat(Smoothness), specular);
+			
 			var isGlossinessFromBaseAlpha = material.IsKeywordEnabled("_GLOSSINESS_FROM_BASE_ALPHA");
+			var smoothness = material.GetFloat(Smoothness);
+			var roughness = 0f;
+
+			void ExportAlbedoToPBRMap()
+			{
+				// NOTE: Source BaseMap Alpha is not supported by Cocos, Generate PBR map.
+				var albedoMap = material.mainTexture as UnityEngine.Texture2D;
+				if (albedoMap)
+				{
+					define.Add("USE_PBR_MAP", true);
+					var pbrMapUuid = URPMaterialConverter.ExportPBRMap(
+						albedoMap, smoothness, MinRoughness, URPMaterialConverter.PBRMapSourceType.Albedo);
+					prop.Add("pbrMap", new AssetReference(pbrMapUuid));
+					roughness = 1f;
+				}
+			}
 			
 			if (material.IsKeywordEnabled("_SPECULAR_COLOR"))
 			{
 				if (isGlossinessFromBaseAlpha)
 				{
-					var albedoMap = material.mainTexture;
-					if (albedoMap)
-					{
-						define.Add("USE_PBR_MAP", true);
-						prop.Add("pbrMap", new AssetReference<cc.Texture2D>(Exporter.GetUuidOrExportAsset(albedoMap)));
-					}
-					// NOTE: Source BaseMap Alpha is not supported by Cocos, so use default values.
-					roughness = 0.5f;
-					specular = 0.5f;
+					ExportAlbedoToPBRMap();
 				}
 			}
 			else if (material.IsKeywordEnabled("_SPECGLOSSMAP"))
 			{
-				var specMap = material.GetTexture(SpecGlossMap);
+				var specMap = material.GetTexture(SpecGlossMap) as UnityEngine.Texture2D;
 				if (specMap)
 				{
 					define.Add("USE_PBR_MAP", true);
-					prop.Add("pbrMap", new AssetReference<cc.Texture2D>(Exporter.GetUuidOrExportAsset(specMap)));
+					var pbrMapUuid = URPMaterialConverter.ExportPBRMap(
+						specMap, smoothness, MinRoughness, URPMaterialConverter.PBRMapSourceType.SimpleLitSpecular);
+					prop.Add("pbrMap", new AssetReference(pbrMapUuid));
+					roughness = 1f;
 				}
 				else if (isGlossinessFromBaseAlpha)
 				{
-					var albedoMap = material.mainTexture;
-					if (albedoMap)
-					{
-						define.Add("USE_PBR_MAP", true);
-						prop.Add("pbrMap", new AssetReference<cc.Texture2D>(Exporter.GetUuidOrExportAsset(albedoMap)));
-					}
-					// NOTE: Source BaseMap Alpha is not supported by Cocos, so use default values.
-					roughness = 0.5f;
-					specular = 0.5f;
+					// NOTE: No support for use with SpecGlossMap
+					ExportAlbedoToPBRMap();
 				}
 			}
 			else
 			{
-				roughness = 0;
 				specular = 0;
 			}
 			

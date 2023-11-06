@@ -2,13 +2,11 @@ using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using UnityEditor.SceneManagement;
 using cc;
 using UnityEngine.Rendering;
-using Component = cc.Component;
-using Object = UnityEngine.Object;
 
 namespace cc
 {	
@@ -221,7 +219,7 @@ namespace Unity2Cocos
 			
 			var skyBoxInfo = new SkyboxInfo();
 			var sunSource = RenderSettings.sun ? RenderSettings.sun : 
-				Object.FindObjectsOfType<Light>().FirstOrDefault(x => x.type == LightType.Directional);
+				UnityEngine.Object.FindObjectsOfType<Light>().FirstOrDefault(x => x.type == LightType.Directional);
 			if (sunSource)
 			{
 				skyBoxInfo._rotationAngle = sunSource.transform.rotation.RightHanded().eulerAngles.y;

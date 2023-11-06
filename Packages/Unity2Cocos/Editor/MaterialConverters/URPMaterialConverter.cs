@@ -147,8 +147,15 @@ namespace Unity2Cocos
 		{
 			_pbrTextureMap.Clear();
 		}
-		
-		public static string ExportPBRMap(UnityEngine.Texture2D src, bool isMetallicMap)
+
+		public enum PBRMapSourceType
+		{
+			Albedo,
+			SimpleLitSpecular,
+			LitMetallic,
+		}
+		public static string ExportPBRMap(
+			UnityEngine.Texture2D src, float smoothness, float minRoughness, PBRMapSourceType type)
 		{
 			var srcPath = AssetDatabase.GetAssetPath(src);
 			var key = src.GetHashCode();
@@ -172,9 +179,12 @@ namespace Unity2Cocos
 				// SPECULAR_INTENSITY_CHANNEL a
 				var c = colors[i];
 				colors[i].r = 1f;
-				colors[i].g = 1f - c.a;
-				colors[i].b = isMetallicMap ? c.r : 1f;
-				colors[i].a = 1f;
+				colors[i].g = Mathf.Max(1f - smoothness * c.a, minRoughness);
+				colors[i].b = type == PBRMapSourceType.LitMetallic ? c.r : 0f;
+				
+				// NOTE: Cocos Standard shader does not support specular color, so it grayscale.
+				colors[i].a = type == PBRMapSourceType.SimpleLitSpecular ? 
+						(c.r + c.g + c.b) / 3f : 1f;
 			}
 
 			var dst = new UnityEngine.Texture2D(src.width, src.height);

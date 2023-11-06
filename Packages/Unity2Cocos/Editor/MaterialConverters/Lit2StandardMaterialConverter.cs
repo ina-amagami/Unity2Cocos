@@ -30,16 +30,19 @@ namespace Unity2Cocos
 			var metallic = material.GetFloat(Metallic);
 			var specColor = material.GetColor(SpecColor);
 			var specular = (specColor.r + specColor.g + specColor.b) / 3f;
-			var isSpecHighlight = material.GetInt(SpecularHighlights);
-			var roughness = Mathf.Max(
-				1f - material.GetFloat(Smoothness),
-				isSpecHighlight > 0 ? specular : 0);
+			var isSpecHighlight = material.GetInt(SpecularHighlights) > 0;
+			var smoothness = material.GetFloat(Smoothness);
+			
+			// NOTE: Cocos has an offset of 0.2 for roughness, and a roughness value of 0 will cause highlights to disappear.
+			// Just Lit shader internally holds a specular of 0.2, so use this.
+			var roughness = Mathf.Max(1f - smoothness, isSpecHighlight ? specular : 0);
 			
 			var metallicMap = material.GetTexture(MetallicGlossMap) as UnityEngine.Texture2D;
 			if (metallicMap)
 			{
 				define.Add("USE_PBR_MAP", true);
-				var pbrMapUuid = URPMaterialConverter.ExportPBRMap(metallicMap, true);
+				var pbrMapUuid = URPMaterialConverter.ExportPBRMap(
+					metallicMap, smoothness, isSpecHighlight ? specular : 0, URPMaterialConverter.PBRMapSourceType.LitMetallic);
 				prop.Add("pbrMap", new AssetReference(pbrMapUuid));
 
 				metallic = 1f;
@@ -53,7 +56,8 @@ namespace Unity2Cocos
 				if (albedoMap)
 				{
 					define.Add("USE_PBR_MAP", true);
-					var pbrMapUuid = URPMaterialConverter.ExportPBRMap(albedoMap, false);
+					var pbrMapUuid = URPMaterialConverter.ExportPBRMap(
+						albedoMap, smoothness, isSpecHighlight ? specular : 0, URPMaterialConverter.PBRMapSourceType.Albedo);
 					prop.Add("pbrMap", new AssetReference(pbrMapUuid));
 					roughness = 1f;
 				}
