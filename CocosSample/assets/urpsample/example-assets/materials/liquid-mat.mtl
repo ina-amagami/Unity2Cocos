@@ -15,6 +15,7 @@
   ],
   "_states": [
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -29,6 +30,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -38,6 +40,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -47,6 +50,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -56,6 +60,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -65,6 +70,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -90,7 +96,8 @@
         "a": 118,
         "__type__": "cc.Color"
       },
-      "roughness": 0.199999928,
+      "metallic": 0.0,
+      "roughness": 0.85,
       "specularIntensity": 0.199999928
     },
     {},

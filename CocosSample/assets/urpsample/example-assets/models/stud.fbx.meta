@@ -2,12 +2,12 @@
   "ver": "2.3.8",
   "importer": "fbx",
   "imported": true,
-  "uuid": "480d26df-a0d7-46a0-8c10-a715651cd51f",
+  "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2",
   "files": [],
   "subMetas": {
     "817a2": {
       "importer": "gltf-mesh",
-      "uuid": "480d26df-a0d7-46a0-8c10-a715651cd51f@817a2",
+      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@817a2",
       "displayName": "",
       "id": "817a2",
       "name": "stud.mesh",
@@ -25,7 +25,7 @@
     },
     "29bb4": {
       "importer": "gltf-mesh",
-      "uuid": "480d26df-a0d7-46a0-8c10-a715651cd51f@29bb4",
+      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@29bb4",
       "displayName": "",
       "id": "29bb4",
       "name": "stud_short.mesh",
@@ -43,7 +43,7 @@
     },
     "318ef": {
       "importer": "gltf-material",
-      "uuid": "480d26df-a0d7-46a0-8c10-a715651cd51f@318ef",
+      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@318ef",
       "displayName": "",
       "id": "318ef",
       "name": "mat_wood_Plywood.material",
@@ -59,7 +59,7 @@
     },
     "b7eff": {
       "importer": "gltf-scene",
-      "uuid": "480d26df-a0d7-46a0-8c10-a715651cd51f@b7eff",
+      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@b7eff",
       "displayName": "",
       "id": "b7eff",
       "name": "stud.prefab",
@@ -80,20 +80,20 @@
     },
     "assetFinder": {
       "meshes": [
-        "480d26df-a0d7-46a0-8c10-a715651cd51f@817a2",
-        "480d26df-a0d7-46a0-8c10-a715651cd51f@29bb4"
+        "1e91ff77-2236-410f-8b99-3ea40be5cad2@817a2",
+        "1e91ff77-2236-410f-8b99-3ea40be5cad2@29bb4"
       ],
       "skeletons": [],
       "textures": [],
       "materials": [
-        "480d26df-a0d7-46a0-8c10-a715651cd51f@318ef"
+        "1e91ff77-2236-410f-8b99-3ea40be5cad2@318ef"
       ],
       "scenes": [
-        "480d26df-a0d7-46a0-8c10-a715651cd51f@b7eff"
+        "1e91ff77-2236-410f-8b99-3ea40be5cad2@b7eff"
       ]
     },
     "imageMetas": [],
-    "redirect": "480d26df-a0d7-46a0-8c10-a715651cd51f@b7eff",
+    "redirect": "1e91ff77-2236-410f-8b99-3ea40be5cad2@b7eff",
     "lods": {
       "enable": false,
       "hasBuiltinLOD": false,

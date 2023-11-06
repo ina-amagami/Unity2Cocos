@@ -20,6 +20,7 @@
   ],
   "_states": [
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -29,6 +30,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -38,6 +40,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -47,6 +50,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -56,6 +60,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -65,6 +70,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -77,7 +83,7 @@
   "_props": [
     {
       "mainTexture": {
-        "__uuid__": "03cd4f0b-978c-4c2b-b05c-248fa6592893@6c48a",
+        "__uuid__": "f7c23156-6ac5-4809-977b-b6b2a218cfe3@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
       "tilingOffset": {
@@ -95,18 +101,19 @@
         "__type__": "cc.Color"
       },
       "normalMap": {
-        "__uuid__": "35d887f2-0ab8-41e7-ac23-5b59c3f05bee@3c318",
+        "__uuid__": "0907a685-c72b-4fa1-a727-36df3c648368@3c318",
         "__expectedType__": "cc.Texture2D"
       },
       "normalStrength": 1.0,
       "pbrMap": {
-        "__uuid__": "a871149d-721a-45ac-bd28-4411caf15281@6c48a",
-        "__expectedType__": "cc.Texture2D"
+        "__uuid__": "16e05db9-90a2-4fca-8d13-b0ee6ac80109@6c48a",
+        "__expectedType__": null
       },
-      "roughness": 0.199999928,
+      "metallic": 1.0,
+      "roughness": 1.0,
       "specularIntensity": 0.199999928,
       "occlusionMap": {
-        "__uuid__": "a871149d-721a-45ac-bd28-4411caf15281@6c48a",
+        "__uuid__": "80b1b5f7-9c34-4581-b4d1-d8eec3ea57de@6c48a",
         "__expectedType__": "cc.Texture2D"
       }
     },

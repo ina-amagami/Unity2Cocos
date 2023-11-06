@@ -19,6 +19,7 @@
   ],
   "_states": [
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -28,6 +29,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -37,6 +39,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -46,6 +49,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -55,6 +59,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -64,6 +69,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -76,7 +82,7 @@
   "_props": [
     {
       "mainTexture": {
-        "__uuid__": "b5eed6ec-95a2-4c5a-bcf2-11fb3d6f4cba@6c48a",
+        "__uuid__": "f987066a-92dd-4125-8e65-4fa1a88850b9@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
       "tilingOffset": {
@@ -94,15 +100,16 @@
         "__type__": "cc.Color"
       },
       "normalMap": {
-        "__uuid__": "1b7c711c-747d-4160-921c-a1bbfc9f3486@3c318",
+        "__uuid__": "a028e965-6aa7-4ff0-b929-979a352b2d0b@3c318",
         "__expectedType__": "cc.Texture2D"
       },
       "normalStrength": 1.0,
       "pbrMap": {
-        "__uuid__": "d8c0009a-6bc1-4ac1-be3a-eb2a10112027@6c48a",
-        "__expectedType__": "cc.Texture2D"
+        "__uuid__": "3d4e3608-3cb3-4af3-8c87-dde5e3288ef5@6c48a",
+        "__expectedType__": null
       },
-      "roughness": 0.199999928,
+      "metallic": 1.0,
+      "roughness": 1.0,
       "specularIntensity": 0.199999928
     },
     {},

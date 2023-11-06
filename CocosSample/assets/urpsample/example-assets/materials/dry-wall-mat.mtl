@@ -8,7 +8,8 @@
   "_defines": [
     {
       "USE_ALBEDO_MAP": true,
-      "USE_NORMAL_MAP": true
+      "USE_NORMAL_MAP": true,
+      "USE_PBR_MAP": true
     },
     {},
     {},
@@ -18,6 +19,7 @@
   ],
   "_states": [
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -27,6 +29,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -36,6 +39,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -45,6 +49,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -54,6 +59,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -63,6 +69,7 @@
       }
     },
     {
+      "priority": 128,
       "rasterizerState": {},
       "depthStencilState": {},
       "blendState": {
@@ -75,7 +82,7 @@
   "_props": [
     {
       "mainTexture": {
-        "__uuid__": "9e1ba98b-25be-4a85-a8aa-32e6e4d7b26b@6c48a",
+        "__uuid__": "54599b52-1819-47b1-bd69-f864d9e390a2@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
       "tilingOffset": {
@@ -93,16 +100,17 @@
         "__type__": "cc.Color"
       },
       "normalMap": {
-        "__uuid__": "5c751bbb-fa12-4ccd-9d65-d5d80f182d5b@3c318",
+        "__uuid__": "b4b7a1fd-7e7c-44d0-88c5-b2f2eb0fa835@3c318",
         "__expectedType__": "cc.Texture2D"
       },
       "normalStrength": 1.0,
       "pbrMap": {
-        "__uuid__": "9e1ba98b-25be-4a85-a8aa-32e6e4d7b26b@6c48a",
-        "__expectedType__": "cc.Texture2D"
+        "__uuid__": "49e713d2-baa0-45f5-9488-5a77d94b83f4@6c48a",
+        "__expectedType__": null
       },
-      "roughness": 0.5,
-      "specularIntensity": 0.5
+      "metallic": 0.0,
+      "roughness": 1.0,
+      "specularIntensity": 0.199999928
     },
     {},
     {},
