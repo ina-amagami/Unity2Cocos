@@ -18,11 +18,7 @@ Unity URP sample scene converted for Cocos and built on the web.
 
 - Support URP material to Cocos material convert. ( If you are using Built-In pipeline, you can convert to URP with the Unity's support. )
 
-- Map Unity's Built-In assets to Cocos' Built-In assets. (ex. Unity's Cube mesh -> Cocos' Box mesh)
-
-- Map MonoBehaviour script to Cocos' TypeScript. (Property migration not supported.)
-
-- Format directory paths to be web-like.
+- Map Unity's assets to Cocos' assets. (ex. Unity's Cube mesh -> Cocos' Box mesh)
 
 ## Under development
 
@@ -39,6 +35,9 @@ The following will not be supported. We need your help!
 - ParticleSystem / 2D Feature / uGUI convert.
 
 - Audio / Animation export.
+
+If you are new to CocosCreator, please read this page first to understand the differences between Unity and CocosCreator. 
+https://docs.cocos.com/creator/manual/en/guide/unity/
 
 ## Required
 
