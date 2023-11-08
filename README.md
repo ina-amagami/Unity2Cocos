@@ -1,6 +1,6 @@
 # Unity 2 Cocos
 
-![](./Documents/unity2cocos.png)
+![](./Docs/unity2cocos.jpg)
 
 Export 3D scene and assets in Unity to Cocos Creator.
 
