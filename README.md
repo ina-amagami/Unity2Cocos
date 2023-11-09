@@ -131,7 +131,7 @@ Enter the folder path: [Your export directory]
 | Ambient Light | ✅ | Only gradient settings are taken over (because Cocos only supports gradients). |
 | Shadows | ✅ | Refer to URP pipeline settings. |
 | Skybox | ❌ | |
-| Prefab<br>Nested Prefab | ❌ | Unpack to a normal GameObject and then convert. |
+| Prefab | ❌ | Unpack to a normal GameObject and then convert. |
 
 ### Assets
 
@@ -143,6 +143,7 @@ Enter the folder path: [Your export directory]
 | Single Mesh and<br>non-FBX formats | ❌ | |
 | 2D Texture | ✅ | Some formats may not be supported by Cocos. |
 | 3D Texture<br>TextureArray | ❌ | |
+| Sprite | ❌ | |
 | Material  | ✅ | If no MaterialConverter is defined, Cocos' Standard shaders are used. |
 | Shader  | ❌ | Use the one prepared on the Cocos side. |
 
@@ -152,6 +153,8 @@ Enter the folder path: [Your export directory]
 | ---- | :---: | ---- |
 | Transform | ✅ | Converted from left hand coordinate system to right hand coordinate system. |
 | Mesh Filter &<br>MeshRenderer | ✅ | |
+| Skinned Mesh Renderer | ❌ | |
+| Sprite Renderer | ❌ | |
 | Camera | ✅ | Physical parameters are not supported. |
 | Light | ✅ | Area light not yet supported (will be in the future). |
 | LightProbeGroup | ✅ | |
@@ -160,6 +163,8 @@ Enter the folder path: [Your export directory]
 | Volume<br>(PostProcessing) | ✅ | Global Volume only, uses Cocos PostProcess. Needs to be configured on Cocos side.<br> https://docs.cocos.com/creator/manual/en/render-pipeline/post-process/<br><br>Supported only by Bloom, FXAA. |
 | Colliders | ❌ | Future support. |
 | Rigidbody | ❌ | Future support. |
+| Particle System | ❌ | |
+| Animator | ❌ | |
 
 ### Material Converters
 
