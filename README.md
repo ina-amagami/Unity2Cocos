@@ -146,6 +146,7 @@ Enter the folder path: [Your export directory]
 | Sprite | ❌ | |
 | Material  | ✅ | If no MaterialConverter is defined, Cocos' Standard shaders are used. |
 | Shader  | ❌ | Use the one prepared on the Cocos side. |
+| Terrain  | ❌ | |
 
 ### Components
 
@@ -155,6 +156,7 @@ Enter the folder path: [Your export directory]
 | Mesh Filter &<br>MeshRenderer | ✅ | |
 | Skinned Mesh Renderer | ❌ | |
 | Sprite Renderer | ❌ | |
+| Terrain  | ❌ | |
 | Camera | ✅ | Physical parameters are not supported. |
 | Light | ✅ | Area light not yet supported (will be in the future). |
 | LightProbeGroup | ✅ | |
