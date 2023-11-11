@@ -12,7 +12,7 @@ namespace cc
 		public float _shadingScale = 1;
 	}
 	
-	public class Fxaa : Component
+	public class FXAA : Component
 	{
 	}
 	
@@ -50,7 +50,7 @@ namespace Unity2Cocos
 			var additionalData = camera.GetUniversalAdditionalCameraData();
 			if (additionalData && additionalData.antialiasing != AntialiasingMode.None)
 			{
-				list.Add(new Fxaa());
+				list.Add(new FXAA());
 			}
 
 			var profile = component.sharedProfile;

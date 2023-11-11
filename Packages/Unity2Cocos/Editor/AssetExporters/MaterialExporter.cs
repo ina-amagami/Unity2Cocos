@@ -51,7 +51,7 @@ namespace Unity2Cocos
 		{
 			public Meta()
 			{
-				ver = "1.0.20";
+				ver = "1.0.21";
 				importer = "material";
 			}
 		}

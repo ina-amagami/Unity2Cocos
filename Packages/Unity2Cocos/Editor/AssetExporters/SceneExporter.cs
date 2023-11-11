@@ -136,7 +136,7 @@ namespace Unity2Cocos
 		{
 			public Meta()
 			{
-				ver = "1.1.45";
+				ver = "1.1.49";
 				importer = "scene";
 			}
 		}

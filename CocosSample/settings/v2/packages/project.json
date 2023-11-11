@@ -2,11 +2,14 @@
   "general": {
     "highQuality": true
   },
-  "__version__": "1.0.5",
+  "__version__": "1.0.6",
   "fbx": {
     "legacyFbxImporter": {
       "visible": true
     }
   },
-  "custom_joint_texture_layouts": []
+  "custom_joint_texture_layouts": [],
+  "script": {
+    "preserveSymlinks": true
+  }
 }

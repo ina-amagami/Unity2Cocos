@@ -47,7 +47,7 @@ namespace Unity2Cocos
 			
 			public Meta()
 			{
-				ver = "2.3.8";
+				ver = "2.3.12";
 				importer = "fbx";
 			}
 		}

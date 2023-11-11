@@ -1,13 +1,13 @@
 {
-  "ver": "2.3.8",
+  "ver": "2.3.12",
   "importer": "fbx",
   "imported": true,
-  "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2",
+  "uuid": "eeb9d6b2-e247-4093-917e-36170cc41d69",
   "files": [],
   "subMetas": {
     "817a2": {
       "importer": "gltf-mesh",
-      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@817a2",
+      "uuid": "eeb9d6b2-e247-4093-917e-36170cc41d69@817a2",
       "displayName": "",
       "id": "817a2",
       "name": "stud.mesh",
@@ -25,7 +25,7 @@
     },
     "29bb4": {
       "importer": "gltf-mesh",
-      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@29bb4",
+      "uuid": "eeb9d6b2-e247-4093-917e-36170cc41d69@29bb4",
       "displayName": "",
       "id": "29bb4",
       "name": "stud_short.mesh",
@@ -43,7 +43,7 @@
     },
     "318ef": {
       "importer": "gltf-material",
-      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@318ef",
+      "uuid": "eeb9d6b2-e247-4093-917e-36170cc41d69@318ef",
       "displayName": "",
       "id": "318ef",
       "name": "mat_wood_Plywood.material",
@@ -59,7 +59,7 @@
     },
     "b7eff": {
       "importer": "gltf-scene",
-      "uuid": "1e91ff77-2236-410f-8b99-3ea40be5cad2@b7eff",
+      "uuid": "eeb9d6b2-e247-4093-917e-36170cc41d69@b7eff",
       "displayName": "",
       "id": "b7eff",
       "name": "stud.prefab",
@@ -80,20 +80,20 @@
     },
     "assetFinder": {
       "meshes": [
-        "1e91ff77-2236-410f-8b99-3ea40be5cad2@817a2",
-        "1e91ff77-2236-410f-8b99-3ea40be5cad2@29bb4"
+        "eeb9d6b2-e247-4093-917e-36170cc41d69@817a2",
+        "eeb9d6b2-e247-4093-917e-36170cc41d69@29bb4"
       ],
       "skeletons": [],
       "textures": [],
       "materials": [
-        "1e91ff77-2236-410f-8b99-3ea40be5cad2@318ef"
+        "eeb9d6b2-e247-4093-917e-36170cc41d69@318ef"
       ],
       "scenes": [
-        "1e91ff77-2236-410f-8b99-3ea40be5cad2@b7eff"
+        "eeb9d6b2-e247-4093-917e-36170cc41d69@b7eff"
       ]
     },
     "imageMetas": [],
-    "redirect": "1e91ff77-2236-410f-8b99-3ea40be5cad2@b7eff",
+    "redirect": "eeb9d6b2-e247-4093-917e-36170cc41d69@b7eff",
     "lods": {
       "enable": false,
       "hasBuiltinLOD": false,
