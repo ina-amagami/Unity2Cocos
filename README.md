@@ -43,7 +43,7 @@ https://docs.cocos.com/creator/manual/en/guide/unity/
 
 \>= Unity 2022.3.11f1 ( \>= URP 14.0.9 )
 
-\>= Cocos Creator 3.8.0
+\>= Cocos Creator 3.8.1
 
 ## Install
 
